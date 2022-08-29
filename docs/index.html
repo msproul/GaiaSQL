@@ -8,7 +8,7 @@
 <center>
 <a name="Top">
 <table border=6>
-<tr><td align=center><h1>GAIA<br/>Global Astrometric Interferometer for Astrophysics</h1> <a href="https://gea.esac.esa.int/archive/documentation/GEDR3/" target="_blank">https://gea.esac.esa.int/archive/documentation/GEDR3</a> <h3>GAIA Database Project by Mark & Keith Sproul</h3> Mark Sproul msproul@skychariot.com<br/> Keith Sproul ksproul@skychariot.com<br/><br/> The GAIA Star Project (Data Release 3) has 1.8 BILLION Stars. This is too many to handle easily. We put that data into a mySQL Database that is accessable by other programs.<br/>  </td></tr>
+<tr><td align=center><h1>GAIA<br/>Global Astrometric Interferometer for Astrophysics</h1> <a href="https://gea.esac.esa.int/archive/documentation/GDR3/" target="_blank">https://gea.esac.esa.int/archive/documentation/GDR3</a> <h3>GAIA Database Project by Mark & Keith Sproul</h3> Mark Sproul msproul@skychariot.com<br/> Keith Sproul ksproul@skychariot.com<br/><br/> The GAIA Star Project (Data Release 3) has 1.8 BILLION Stars. This is too many to handle easily. We put that data into a mySQL Database that is accessable by other programs.<br/>  </td></tr>
 <tr><td align=center><br><h2>The Milky Way</h2><br><img  width=1100 src="http://www.skychariot.com/GAIA/starmap_2020_4k_print.jpg"><br><A href="https://svs.gsfc.nasa.gov/4851">https://svs.gsfc.nasa.gov/4851</a><br><br></td></tr>
 <tr><td align=center><br><h2>Star Count</h2><br><img  width=1100 src="http://www.skychariot.com/GAIA/StarCount.jpg"><br>Number of Stars per by 1 deg x 1 deg<br/>Counted from GAIA data<br/>&copy; 2022 Keith Sproul<br><br></td></tr>
 <tr><td align=center><img  width=1100 src="http://www.skychariot.com/GAIA/StarCount2.jpg"><br>Number of Stars per by 1 deg x 1 deg<br/>Counted from GAIA data<br/>&copy; 2022 Keith Sproul<br><br></td></tr>
@@ -21,21 +21,21 @@
 <h1>Abstract</h1>
 </center>
 The European Space Agency developed the Gaia space observatory to create
-the largest, most precise three-dimensional map of the Milky Way by surveying about 1 percent of the galaxy's 100 billion stars. 
-It was launched in December 2013 and became operational in July 2014. 
-Gaia collected data on almost 2 billion stars: position, brightness, proper motion, and more. 
+the largest, most precise three-dimensional map of the Milky Way by surveying about 1 percent of the galaxy's 100 billion stars.
+It was launched in December 2013 and became operational in July 2014.
+Gaia collected data on almost 2 billion stars: position, brightness, proper motion, and more.
 The first release of data, information on about 1 billion stars, was in September 2016. The second release of data, 1.6 billion stars, was April 2018.
 The current release (DR3) was released in Summer 2022, and it contains information on 1.8 billion stars.
-Many of us use planetarium programs to learn the night sky or control a telescope for imaging or observing. 
-Many such programs are available, some commercial, some free and open-source, 
+Many of us use planetarium programs to learn the night sky or control a telescope for imaging or observing.
+Many such programs are available, some commercial, some free and open-source,
 on all platforms, Windows, Mac, Linux, and cell phones.
 <br>
 These planetarium usually have star catalogs in them, quite often the Yale Bright Star (9,000 stars), Hipparcos (118,000), and Henry Draper (272,000).
 <br><br>
-The Gaia data is huge, with 152 fields per star and 1.8 billion stars, that is a LOT of data. (2.1 Terabytes) 
-All we want is enough information to be able to display the star, with location, color, and brightness and to do it QUICK. 
+The Gaia data is huge, with 152 fields per star and 1.8 billion stars, that is a LOT of data. (2.1 Terabytes)
+All we want is enough information to be able to display the star, with location, color, and brightness and to do it QUICK.
 Even though computers are getting bigger and bigger, it is unrealistic to keep the entire catalog in memory.
-We wrote a simple 'C' program to extract out the 7 fields that we wanted out of the 152 fields, 
+We wrote a simple 'C' program to extract out the 7 fields that we wanted out of the 152 fields,
 create integer values for the RA and DEC for fast searching and put in an easy to access database.<br>
 Then people writing planetarium programs can easily add SQL database calls and retrieve the stars from the database server.<br>
 <br>
@@ -69,25 +69,25 @@ We have done the same thing with the Two Micron All-Sky Survey star catalog.
 </table>
 
 </center><br>
-This document will explain how to set up an Ubuntu Linux server running MariaDB (or mySQL) 
+This document will explain how to set up an Ubuntu Linux server running MariaDB (or mySQL)
 SQL Server and then implement the Gaia Star Catalog search engine.<br>
-The Gaia DR3 (Data Release 3) catalog has 1.8 BILLION stars. There are 3386 individual ZIP files with over 500,000 records per file 
-and 152 fields per record. Of all of that data, we are only interested in 7 fields, 
+The Gaia DR3 (Data Release 3) catalog has 1.8 BILLION stars. There are 3386 individual ZIP files with over 500,000 records per file
+and 152 fields per record. Of all of that data, we are only interested in 7 fields,
 and then we add two index fields to speed up searching.<br>
-This document will explain how to install an SQL database server that will make the Gaia Star Catalog available to programs 
+This document will explain how to install an SQL database server that will make the Gaia Star Catalog available to programs
 wanting to display the stars.<br>
-We have done the hard work for you and have created much smaller files with only the needed data and the indexes already created. 
+We have done the hard work for you and have created much smaller files with only the needed data and the indexes already created.
 You only have to download 75 gig of compressed files instead of over 700 gig of compressed files of the original data.
-This then decompresses into 228 gig of SQL data files. 
+This then decompresses into 228 gig of SQL data files.
 These then get loaded into the SQL server, once loaded both the compressed and uncompressed files can be deleted.
 <br><br>
-The first computer we ran the SQL server on was a 2014 Dell desktop with an i7-4770 CPU @ 3.40GHz. 
-We installed 32 gig of memory and a SATA attached SSD hard drive. Later we used an NVME SSD hard drive. 
+The first computer we ran the SQL server on was a 2014 Dell desktop with an i7-4770 CPU @ 3.40GHz.
+We installed 32 gig of memory and a SATA attached SSD hard drive. Later we used an NVME SSD hard drive.
 The NVME hard drive plugs into the CPU motherboard and give you even faster speed than a SATA attached SSD drive.<br>
-We later upgraded to an old (2012) Dell Server class machine with dual Xeon CPU E5-2687W 0 @ 3.10GHz and 256 gig of memory. 
+We later upgraded to an old (2012) Dell Server class machine with dual Xeon CPU E5-2687W 0 @ 3.10GHz and 256 gig of memory.
 A computer of this class can be bought off of eBay for under $1000.<br>
-Our final configuration has the operating system on a SATA attached SSD and the actual SQL database files on the NVME SSD by itself 
-with no other files on that drive. I feel this configuration of having the SQL files on a separate NVME SSD drive is ideal. 
+Our final configuration has the operating system on a SATA attached SSD and the actual SQL database files on the NVME SSD by itself
+with no other files on that drive. I feel this configuration of having the SQL files on a separate NVME SSD drive is ideal.
 This is especially worthwhile if the computer is used for other things because of how SSD drives age.
 We use the same server as our local file server and have several other SQL databases on it for other uses.
 <br><br>
@@ -137,7 +137,7 @@ I would love to have people use my server. I would also love to help people impl
 <! ========================================================================================================= >
 <hr><a name="Step1"></a><h1>Step 1: Install Linux Operating System</h1>
 If you already have a Linux computer running, you can skip to Step 2.<br><br>
-Download the Ubuntu install image onto a USB thumb drive and boot off it. Then install Linux. 
+Download the Ubuntu install image onto a USB thumb drive and boot off it. Then install Linux.
 If you are going to use the computer as a desktop, you can install the version with the GUI interface.
 Otherwise, you can just use the server version and not have a GUI interface on the computer at all.
 This process wipes out the hard drive and gives you a completely clean computer.
@@ -148,7 +148,7 @@ This process wipes out the hard drive and gives you a completely clean computer.
 <! ========================================================================================================= >
 <hr><a name="Step2"></a><h1>Step 2: Create Linux Accounts</h1>
 When you install Ubuntu Linux, it creates a ROOT account and what-ever account you give it when you go thru the install procedure. This account will have 'SUDO' privileges. (Super User).<br>
-I would recommend creating another account called GAIA or astronomy or something not assigned to an individual. This account will also need to have SUDO privileges. 
+I would recommend creating another account called GAIA or astronomy or something not assigned to an individual. This account will also need to have SUDO privileges.
 This is NOT required, you can use the default account.
 <br>
 <br>
@@ -156,7 +156,7 @@ This is NOT required, you can use the default account.
 
 <! ========================================================================================================= >
 <hr><a name="Step3"></a><h1>Step 3: Install SQL Database Server</h1>
-If you created the second Linux account, described above, log into it and do all of your work from that account. 
+If you created the second Linux account, described above, log into it and do all of your work from that account.
 If not, just use the default account you created when you installed Linux.<br>
 Then install either MariaDB or mySQL database servers.
 SQL uses TCP/IP port 3306 by default. If you are putting your server out on the internet, it would be a good idea to move this to a non-standard port to reduce the amount of hack attempts make it to your server.<br>
@@ -187,18 +187,18 @@ Go to the mySQL web page <a href="http://mysql.org"   target="_blank">mysql.org<
 
 <! ========================================================================================================= >
 <hr><a name="Step4"></a><h1>Step 4: Create SQL Accounts</h1>
-SQL has a concept of accounts which are different from the Linux user accounts. 
-SQL accounts have their own passwords and different accounts can have access to different databases 
+SQL has a concept of accounts which are different from the Linux user accounts.
+SQL accounts have their own passwords and different accounts can have access to different databases
 and also different levels of access within the database.<br>
 The main SQL account you use will have to have full privileges, but the accounts that actually access the GAIA data will be significantly restricted.<br>
-The software that accesses the GAIA database will use one of these restricted accounts. 
+The software that accesses the GAIA database will use one of these restricted accounts.
 If you have multiple people using the server, give each one their own account.
 That way you can look back later and see who is using it when and how often.
 Each one of these accounts will be significantly restricted so they can ONLY execute the predefined SQL queries.<br>
 <br>
 To run the SQL server type the following: (it is the same command when using MariaDB or mySQL)
 <pre><code  style="background-color:Yellow">
- mysql -u username -p 
+ mysql -u username -p
 </code></pre>
 It will then ask you for the password.<br>
 
@@ -216,7 +216,7 @@ To delete one of these accounts type:
  FLUSH PRIVILEGES;
 </code></pre>
 
-This limits these accounts to ONLY be able to access the 'gaia' database and ONLY execute the predefined SQL scripts. 
+This limits these accounts to ONLY be able to access the 'gaia' database and ONLY execute the predefined SQL scripts.
 They can't even do simple SQL 'select' commands. Therefore they are very limited and secure.<br>
 These are the accounts and passwords you put into the SkyTravel Config file so that when they login into the SQL server.
 <br><br>
@@ -239,7 +239,7 @@ The database consists of 3 tables and a small handful of SQL procedures.<br><br>
  <tr><th colspan=3><h2>Table Descriptions</h2></th></tr>
  <tr><th>Table Name</th> <th># of Records</th> <th>Description</th> </tr>
  <tr><td>Gaia</td>  <th>1.8 Billon<br>1,811,709,771</th> <td>Contains the actual star data, ra,dec,magnitude,color</td></tr>
- <tr><td>grid</td>  <th>64,800<br>(360 * 180)</th><td>A history of what has been looked up, the number times each grid has been accessed, 
+ <tr><td>grid</td>  <th>64,800<br>(360 * 180)</th><td>A history of what has been looked up, the number times each grid has been accessed,
 the last user and the lat time it was accessed</td></tr>
  <tr><td>eventLog</td> <th>Grows</th><td>A Log of every time someone connects and a log of every query made to the server</td></tr>
 </table>
@@ -382,8 +382,8 @@ The files you need to download are:
 <! tar -czvkf Gaia-0.tar.gz GaiaSource_0*.sql >
 Put these into a directory and decompress them. Note the directory path you put these in, you will need it in the next step.
 They will expand out into 3386 individual sql files with over 500,000 records per file.<br>
-Uploading the Star data can take eight hours or more, depending on the speed of your computer. 
-There is a master file named <b><u>Gaia-Upload-Master.sql</u></b> that loads in the 3386 individual SQL source files. 
+Uploading the Star data can take eight hours or more, depending on the speed of your computer.
+There is a master file named <b><u>Gaia-Upload-Master.sql</u></b> that loads in the 3386 individual SQL source files.
 <br><br>
 Once you have downloaded the files, decompress them with the following command:
 <pre><code  style="background-color:Yellow">
@@ -404,15 +404,15 @@ source /path/GaiaSource_785418-786096.sql
 source /path/GaiaSource_786097-786431.sql
 select current_date,current_time;
 </code></pre>
-The SQL system only really knows about fully defined file names. 
-You have to go into this file with an editor and replace the file path with the path to your files. 
+The SQL system only really knows about fully defined file names.
+You have to go into this file with an editor and replace the file path with the path to your files.
 The first and last lines echo the data and time to the console so you know how long it took to load all of these files.<br>
 Then when in the SQL program type the following:
 <pre><code  style="background-color:Yellow">
 source  /your-path-here/Gaia-Upload-Master.sql
 </code></pre>
 <br>
-This will start the process to upload the Gaia star data into the SQL server. This can easily take 8 hours. 
+This will start the process to upload the Gaia star data into the SQL server. This can easily take 8 hours.
 There are ways to speed this up on faster computers by breaking this master file into parts and running them under different threads.
 But this is for someone that is more familiar with Linux.
 <br>
@@ -426,7 +426,7 @@ While still running the SQL server, type the following:
 <pre><code  style="background-color:Yellow">
  call GetRaDec(41,89);
 </code></pre>
-This should return 40 stars. (This is the grid with the lowest number of stars in the entire database). 
+This should return 40 stars. (This is the grid with the lowest number of stars in the entire database).
 See the output below in <a href="#Appendix2">Appendix 2.</a>
 <br>
 <br>
@@ -434,7 +434,7 @@ See the output below in <a href="#Appendix2">Appendix 2.</a>
 
 <! ========================================================================================================= >
 <hr><a name="Step8"></a><h1>Step 8: Configure SkyTravel to access the SQL Gaia Server</h1>
-If you are running SkyTravel, the SQL config file is sqlserver.txt 
+If you are running SkyTravel, the SQL config file is sqlserver.txt
 <pre><code>
 ########################################################################
 # this is being set up for expansion to other data bases in the future
@@ -454,7 +454,7 @@ database  = gaia
 
 <! ========================================================================================================= >
 <hr><a name="Appendix1"></a><h1>Appendix 1: How to access from other software</h1>
-If you want to access the SQL server from other software, you need to figure out how to do remote SQL calls from that software. 
+If you want to access the SQL server from other software, you need to figure out how to do remote SQL calls from that software.
 Most modern programming languages like Python, C++ etc have SQL libraries.<br>
 The calls are simple.<br>
 <ol>
@@ -541,7 +541,7 @@ MariaDB [gaia]> call showl;
 
 <! ========================================================================================================= >
 <hr><a name="Appendix3"></a><h1>Appendix 3: SQL Helper Programs</h1>
-All of the documentation here is using the SQL server via the command line interface. 
+All of the documentation here is using the SQL server via the command line interface.
 There are many very good GUI client applications that make it much easier to do a lot of the maintenance on the SQL server.
 These programs work with all or most of the SQL servers out there. Below is a list of applications that I know of.<br>
 I do a lot of work and queries using the command line interface but I use the GUI program for writing my SQL scripts. I use TablePlus on my Macintosh.<br>
