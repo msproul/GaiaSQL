@@ -8,10 +8,11 @@
 <center>
 <a name="Top">
 <table border=6>
-<tr><td align=center><h1>GAIA<br/>Global Astrometric Interferometer for Astrophysics</h1> <a href="https://gea.esac.esa.int/archive/documentation/GDR3/" target="_blank">https://gea.esac.esa.int/archive/documentation/GDR3</a> <h3>GAIA Database Project by Mark & Keith Sproul</h3> Mark Sproul msproul@skychariot.com<br/> Keith Sproul ksproul@skychariot.com<br/><br/> The GAIA Star Project (Data Release 3) has 1.8 BILLION Stars. This is too many to handle easily. We put that data into a mySQL Database that is accessable by other programs.<br/>  </td></tr>
-<tr><td align=center><br><h2>The Milky Way</h2><br><img  width=1100 src="http://www.skychariot.com/GAIA/starmap_2020_4k_print.jpg"><br><A href="https://svs.gsfc.nasa.gov/4851">https://svs.gsfc.nasa.gov/4851</a><br><br></td></tr>
-<tr><td align=center><br><h2>Star Count</h2><br><img  width=1100 src="http://www.skychariot.com/GAIA/StarCount.jpg"><br>Number of Stars per by 1 deg x 1 deg<br/>Counted from GAIA data<br/>&copy; 2022 Keith Sproul<br><br></td></tr>
-<tr><td align=center><img  width=1100 src="http://www.skychariot.com/GAIA/StarCount2.jpg"><br>Number of Stars per by 1 deg x 1 deg<br/>Counted from GAIA data<br/>&copy; 2022 Keith Sproul<br><br></td></tr>
+<tr><td align=center><h1>GAIA<br/>Global Astrometric Interferometer for Astrophysics</h1> <a href="https://gea.esac.esa.int/archive/documentation/GDR3/" target="_blank">https://gea.esac.esa.int/archive/documentation/GDR3/</a> <h3>GAIA Database Project by Mark & Keith Sproul</h3> Mark Sproul msproul@skychariot.com<br/> Keith Sproul ksproul@skychariot.com<br/><br/> The GAIA Star Project (Data Release 3) has 1.8 BILLION Stars. This is too many to handle easily. We put that data into a mySQL Database that is accessable by other programs.<br/>  </td></tr>
+<tr><td align=center><br><h2>The Milky Way</h2><br><img  width=1100 src="images/starmap_2020_4k_print.jpg"><br><A href="https://svs.gsfc.nasa.gov/4851">https://svs.gsfc.nasa.gov/4851</a><br><br></td></tr>
+<tr><td align=center><br><h2>Star Count</h2><br><img  width=1100 src="images/StarCount.jpg"><br>Number of Stars per by 1 deg x 1 deg<br/>Counted from GAIA data<br/>&copy; 2022 Keith Sproul<br><br></td></tr>
+<tr><td align=center><img  width=1100 src="images/StarCount2.jpg"><br>Number of Stars per by 1 deg x 1 deg<br/>Counted from GAIA data<br/>&copy; 2022 Keith Sproul<br><br></td></tr>
+<tr><td align=center><br><h2>SkyTravel Program showing M-31 Andromeda</h2>Using the GAIA Database<br><img  width=1100 src="images/SkyTravelAndromeda.jpg"></td></tr>
 </table>
 <a href="#Top">Jump to Top</a>
 <h1>SQL Gaia Star Catalog Server</h1>
@@ -25,7 +26,7 @@ the largest, most precise three-dimensional map of the Milky Way by surveying ab
 It was launched in December 2013 and became operational in July 2014.
 Gaia collected data on almost 2 billion stars: position, brightness, proper motion, and more.
 The first release of data, information on about 1 billion stars, was in September 2016. The second release of data, 1.6 billion stars, was April 2018.
-The current release (DR3) was released in Summer 2022, and it contains information on 1.8 billion stars.
+The current release (DR3) was released in Summer 2022, and it contains information on 1.8 billion stars.<br><br>
 Many of us use planetarium programs to learn the night sky or control a telescope for imaging or observing.
 Many such programs are available, some commercial, some free and open-source,
 on all platforms, Windows, Mac, Linux, and cell phones.
@@ -34,13 +35,13 @@ These planetarium usually have star catalogs in them, quite often the Yale Brigh
 <br><br>
 The Gaia data is huge, with 152 fields per star and 1.8 billion stars, that is a LOT of data. (2.1 Terabytes)
 All we want is enough information to be able to display the star, with location, color, and brightness and to do it QUICK.
-Even though computers are getting bigger and bigger, it is unrealistic to keep the entire catalog in memory.
+Even though computers are getting bigger and bigger, it is unrealistic to keep the entire Gaia catalog in memory.
 We wrote a simple 'C' program to extract out the 7 fields that we wanted out of the 152 fields,
 create integer values for the RA and DEC for fast searching and put in an easy to access database.<br>
 Then people writing planetarium programs can easily add SQL database calls and retrieve the stars from the database server.<br>
 <br>
 This has been fully implemented in SkyTravel planetarium software. (See <a href="#Appendix4">Appendix 4</a>).<br>
-We have done the same thing with the Two Micron All-Sky Survey star catalog.
+We have done the same thing with the Two Micron All-Sky Survey star catalog (470 million stars).
 <center>
 <! ========================================================================================================= >
 <hr>
@@ -48,24 +49,24 @@ We have done the same thing with the Two Micron All-Sky Survey star catalog.
 <h1>Index</h1>
 <table border=3>
  <tr><th colspan=4>Installation Steps</th></tr>
- <tr><td><a href="#preface">Preface</a></td>    <td>How to connect to our server</td>         <td colspan=2></td></tr>
+ <tr><td><a href="#preface">Preface</a></td>    <td>How to connect to our server</td>  <td colspan=2></td></tr>
  <tr><td><a href="#Step0">Step 0</a></td>    <td>System Requirements</td>    <td colspan=2>Hardware and Software</td> </td></tr>
- <tr><td><a href="#Step1">Step 1</a></td>    <td>Install Linux Operating System</td> <td>Ubuntu Linux V 20</td>  <td><a href="http://ubuntu.com"  target="_blank">ubuntu.com</a></td></tr>
- <tr><td><a href="#Step2">Step 2</a></td>    <td>Create Linux Accounts</td>           <td colspan=2></td></tr>
- <tr><td><a href="#Step3">Step 3</a></td>    <td>Install Database Server</td>  <td>MariaDB<br> mySQL</td>  <td><a href="http://mariadb.org" target="_blank">mariadb.org</a><br>
-                                     <a href="http://mysql.org"   target="_blank">mysql.org</a></td></tr>
- <tr><td><a href="#Step4">Step 4</a></td>    <td>Create SQL Accounts</td>           <td colspan=2></td></tr>
- <tr><td><a href="#Step5">Step 5</a></td>    <td>Create GAIA SQL Database</td>          <td colspan=2></td></tr>
- <tr><td><a href="#Step7">Step 6</a></td>    <td>Upload GAIA SQL Data Files into the database</td>     <td colspan=2>This will take a LONG time</td></tr>
- <tr><td><a href="#Step7">Step 7</a></td>    <td>Manually test primary SQL function calls</td>      <td colspan=2></td></tr>
- <tr><td><a href="#Step8">Step 8</a></td>    <td>Configure SkyTravel to access the SQL Gaia Server</td>    <td colspan=2></td></tr>
- <tr><td><a href="#Appendix1">Appendix 1</a></td>  <td>How to access from other software</td>        <td colspan=2></td></tr>
- <tr><td><a href="#Appendix2">Appendix 2</a></td>  <td>Sample SQL outputs</td>            <td colspan=2></td></tr>
- <tr><td><a href="#Appendix3">Appendix 3</a></td>  <td>SQL Helper Programs</td>           <td colspan=2></td></tr>
- <tr><td><a href="#Appendix4">Appendix 4</a></td>  <td>Alpaca &amp; SkyTravel Planetarium</td>        <td colspan=2></td></tr>
- <tr><td><a href="#Appendix5">Appendix 5&nbsp;</a></td> <td>File Sizes &amp; Process Times</td>         <td colspan=2>Just FYI</td></tr>
- <tr><td><a href="#Appendix6">Appendix 6&nbsp;</a></td> <td>Web Links of interest</td>           <td colspan=2></td></tr>
-
+ <tr><td><a href="#Step1">Step 1</a></td>    <td>Install Linux Operating System</td>  <td>Ubuntu Linux V 20</td>  <td><a href="http://ubuntu.com"  target="_blank">ubuntu.com</a></td></tr>
+ <tr><td><a href="#Step2">Step 2</a></td>    <td>Create Linux Accounts</td>    <td colspan=2></td></tr>
+ <tr><td><a href="#Step3">Step 3</a></td>    <td>Install Database Server</td>   <td>MariaDB<br>mySQL</td>
+   <td><a href="http://mariadb.org" target="_blank">mariadb.org</a><br>
+    <a href="http://mysql.org"   target="_blank">mysql.org</a></td></tr>
+ <tr><td><a href="#Step4">Step 4</a></td>    <td>Create SQL Accounts</td>        <td colspan=2></td></tr>
+ <tr><td><a href="#Step5">Step 5</a></td>    <td>Create GAIA SQL Database</td>       <td colspan=2></td></tr>
+ <tr><td><a href="#Step7">Step 6</a></td>    <td>Upload GAIA SQL Data Files into the database</td>  <td colspan=2>This will take a LONG time</td></tr>
+ <tr><td><a href="#Step7">Step 7</a></td>    <td>Manually test primary SQL function calls</td>   <td colspan=2></td></tr>
+ <tr><td><a href="#Step8">Step 8</a></td>    <td>Configure SkyTravel to access the SQL Gaia Server</td> <td colspan=2></td></tr>
+ <tr><td><a href="#Appendix1">Appendix 1</a></td>  <td>How to access from other software</td>     <td colspan=2></td></tr>
+ <tr><td><a href="#Appendix2">Appendix 2</a></td>  <td>Sample SQL outputs</td>         <td colspan=2></td></tr>
+ <tr><td><a href="#Appendix3">Appendix 3</a></td>  <td>SQL Helper Programs</td>        <td colspan=2></td></tr>
+ <tr><td><a href="#Appendix4">Appendix 4</a></td>  <td>Alpaca &amp; SkyTravel Planetarium</td>     <td colspan=2></td></tr>
+ <tr><td><a href="#Appendix5">Appendix 5&nbsp;</a></td> <td>File Sizes &amp; Process Times</td>      <td colspan=2>Just FYI</td></tr>
+ <tr><td><a href="#Appendix6">Appendix 6&nbsp;</a></td> <td>Web Links of interest</td>        <td colspan=2></td></tr>
 </table>
 
 </center><br>
@@ -349,13 +350,13 @@ There are a few SQL scripts needed. Thew were creatred in the above step so they
 <tr><td>showlastMonth</td>  <td>nothing</td>   <td>List of events</td>   <td>Shows the events this month</td></tr>
 <tr><td>showfunctions</td>  <td>nothing</td>   <td>List of functions</td>  <td>Shows the functions in this database</td></tr>
 <tr><td>showUsers</td>   <td>nothing</td>    <td>List of users</td>   <td>Shows who has accessed the system and when</td></tr>
-<tr><td>showGrid</td>   <td>nothing</td>   <td>Grid Stats</td>    <td>How many grids have been visitid</td></tr>
+<tr><td>showGrid</td>   <td>nothing</td>   <td>Grid Stats</td>    <td>Shows ow many grids have been visitid</td></tr>
+<tr><td>showGridComments</td> <td>nothing</td>   <td>All Grids with comments</td><td>Shows All the grids that have labels</td></tr>
 <tr><td>UpdateLogFromGrid</td> <td>nothing</td>     <td>Before / After Counts</td> <td>Update the comment field in the Event Log from the comment in the Grid</td></tr >
 <tr><td colspan=4></td></tr>
 <tr><td>GetFirstDate</td>  <td>Username</td>   <td>First Date</td>    <td>Called from showUsers</td></tr>
 <tr><td>GetLastDate</td>  <td>Username</td>   <td>Last Date</td>    <td>Called from showUsers</td></tr>
 <tr><td>GetMilliSeconds</td> <td>nothing</td>   <td>Time in milliseconds</td> <td>Called from showUsers</td></tr>
-
 </table>
 <br>
 <br>
@@ -570,10 +571,16 @@ SkyTravel is a planetarium program that is part of the AlpacaPi project. AlpacaP
 Alpaca is the next generation of ASCOM and is fully compatible with ASCOM. It uses network based communications instead of the COM architecture used in ASCOM.  Alpaca will run on any platform and any number of computers while ASCOM only runs on a single Windows machine.
 AlpacaPi runs most any flavor of Linux and is targeted at desktop linux and Raspberry-Pi for the controllers.
 <br><br>
-The planetarium program was originally written for the Commodore-64 computer by Dr. Clif Ashcraft and Dr. Frank Covitz in the 1980's. Mark Sproul has revived this old program and got it running in Linux and has done major upgrades compared to the original which had
+The planetarium program was originally written for the Commodore-64 computer by Dr. Clif Ashcraft and Dr. Frank Covitz in the 1980's.
+Mark Sproul has revived this old program and got it running in Linux and has done major upgrades compared to the original which had only around 1000 stars.
 <br><br>
-Keith Sproul has been doing database programing for over 30 years and has recently started doing SQL databases so Keith said he would put the Gaia data into an SQL database and make it available to the SkyTravel program.
-The current configuration has Mark running his full observatory using the SkyTravel program and it connects to the SQL database at Keith's house. Mark is in North East Pennsylvania and Keith is in New Jersey. We also have someone using this from Oregon.
+Keith Sproul has been doing database programing for over 30 years and has recently started doing SQL databases.
+He had been writing SQL databases with millons of records, so jumping to a Billon records wasn't hard.
+Keith then volunteered to put the Gaia data into an SQL database and make it available to the SkyTravel program.
+Working together with Mark getting this working between our houses was a fun project.
+<br>
+The current configuration has Mark running his full observatory using the SkyTravel program and it connects to the SQL database at Keith's house.
+Mark is in North East Pennsylvania and Keith is in New Jersey. We also have someone using this from Oregon.
 <br><br>
 SkyTravel is full open source and is available on Github. <a href="https://github.com/msproul/AlpacaPi/" target="_blank">https://github.com/msproul/AlpacaPi/</a>
 <br>
@@ -632,5 +639,5 @@ These are the times it took me to download, decompress, process and then upload 
 
 <hr>
 </body>
-<address> Created 1/7/2022<br>Modified 8/28/2022<br>&copy; Copyright Keith Sproul<br>EMail <a href="mailto:ksproul@skychariot.com">ksproul@skychariot.com</a></address>
+<address> Created 1/7/2022<br>Modified 8/30/2022<br>&copy; Copyright Keith Sproul<br>EMail <a href="mailto:ksproul@skychariot.com">ksproul@skychariot.com</a></address>
 </html>
