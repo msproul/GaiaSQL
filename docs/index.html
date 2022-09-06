@@ -8,35 +8,36 @@
 <center>
 <a name="Top">
 <table border=6>
-<tr><td align=center><h1>GAIA<br/>Global Astrometric Interferometer for Astrophysics</h1> <a href="https://gea.esac.esa.int/archive/documentation/GDR3/" target="_blank">https://gea.esac.esa.int/archive/documentation/GDR3/</a> <h3>GAIA Database Project by Mark & Keith Sproul</h3> Mark Sproul msproul@skychariot.com<br/> Keith Sproul ksproul@skychariot.com<br/><br/> The GAIA Star Project (Data Release 3) has 1.8 BILLION Stars. This is too many to handle easily. We put that data into a mySQL Database that is accessable by other programs.<br/>  </td></tr>
+<tr><td align=center><h1>ESA GAIA<br>European Space Agency<br>Global Astrometric Interferometer for Astrophysics</h1> <h2>GAIA Database Project by Mark & Keith Sproul</h2>  <h3> <table> <tr><td>GAIA Docmentation</td> <td><a href="https://gea.esac.esa.int/archive/documentation/GDR3/" target="_blank">https://gea.esac.esa.int/archive/documentation/GDR3/</a></td></tr> <tr><td>GAIA SQL Project Mirror Site&nbsp;&nbsp;</td><td><a href="http://www.skychariot.com/gaia.html" target="_blank">http://www.skychariot.com/gaia.html</a></td></tr> </table> </h3> <br> Mark Sproul <a href="mailto:msproul@skychariot.com">msproul@skychariot.com</a><br> Keith Sproul <a href="mailto:ksproul@skychariot.com">ksproul@skychariot.com</a> <br/><br/> See the article in the September 2022 issue of <a href="https://www.astroleague.org/files/reflector/REFLECTOR%20SEPTEMBER%202022%20final%20pages.pdf"Reflections</a>Reflections</a> Magazine Page 18 <br/><br/> The GAIA Star Project (Data Release 3) has 1.8 BILLION Stars. This is too many to handle easily. We put that data into an SQL Database that is accessible by other programs.<br/>  </td></tr>
 <tr><td align=center><br><h2>The Milky Way</h2><br><img  width=1100 src="images/starmap_2020_4k_print.jpg"><br><A href="https://svs.gsfc.nasa.gov/4851">https://svs.gsfc.nasa.gov/4851</a><br><br></td></tr>
 <tr><td align=center><br><h2>Star Count</h2><br><img  width=1100 src="images/StarCount.jpg"><br>Number of Stars per by 1 deg x 1 deg<br/>Counted from GAIA data<br/>&copy; 2022 Keith Sproul<br><br></td></tr>
 <tr><td align=center><img  width=1100 src="images/StarCount2.jpg"><br>Number of Stars per by 1 deg x 1 deg<br/>Counted from GAIA data<br/>&copy; 2022 Keith Sproul<br><br></td></tr>
-<tr><td align=center><br><h2>SkyTravel Program showing M-31 Andromeda</h2>Using the GAIA Database<br><img  width=1100 src="images/SkyTravelAndromeda.jpg"></td></tr>
+<tr><td align=center><br><h2>SkyTravel Program showing M-31 Andromeda with all stars turned on</h2><h3>Using the GAIA SQL Database described in this documentation</h3><br><img  width=1100 src="images/SkyTravelAndromeda.jpg"></td></tr>
 </table>
 <a href="#Top">Jump to Top</a>
+<! Footer >
 <h1>SQL Gaia Star Catalog Server</h1>
 <h2>How to install an SQL database server with the GAIA Star Catalog</h2>
-<h3>Keith Sproul, ksproul@skychariot.com</h3>
+<h3>Keith Sproul, <a href="mailto:ksproul@skychariot.com">ksproul@skychariot.com</a></h3>
 <hr>
 <h1>Abstract</h1>
 </center>
 The European Space Agency developed the Gaia space observatory to create
-the largest, most precise three-dimensional map of the Milky Way by surveying about 1 percent of the galaxy's 100 billion stars.
-It was launched in December 2013 and became operational in July 2014.
-Gaia collected data on almost 2 billion stars: position, brightness, proper motion, and more.
+the largest, most precise three-dimensional map of the Milky Way by surveying about 1 percent of the galaxy's 100 billion stars. 
+It was launched in December 2013 and became operational in July 2014. 
+Gaia collected data on almost 2 billion stars: position, brightness, proper motion, and more. 
 The first release of data, information on about 1 billion stars, was in September 2016. The second release of data, 1.6 billion stars, was April 2018.
 The current release (DR3) was released in Summer 2022, and it contains information on 1.8 billion stars.<br><br>
-Many of us use planetarium programs to learn the night sky or control a telescope for imaging or observing.
-Many such programs are available, some commercial, some free and open-source,
+Many of us use planetarium programs to learn the night sky or control a telescope for imaging or observing. 
+Many such programs are available, some commercial, some free and open-source, 
 on all platforms, Windows, Mac, Linux, and cell phones.
 <br>
-These planetarium usually have star catalogs in them, quite often the Yale Bright Star (9,000 stars), Hipparcos (118,000), and Henry Draper (272,000).
+These planetarium programs usually have star catalogs in them, quite often the Yale Bright Star (9,000 stars), Hipparcos (118,000), and Henry Draper (272,000).
 <br><br>
-The Gaia data is huge, with 152 fields per star and 1.8 billion stars, that is a LOT of data. (2.1 Terabytes)
-All we want is enough information to be able to display the star, with location, color, and brightness and to do it QUICK.
+The Gaia data is huge, with 152 fields per star and 1.8 billion stars, that is a LOT of data. (2.1 Terabytes) 
+All we want is enough information to be able to display the star, with location, color, and brightness and to do it QUICK. 
 Even though computers are getting bigger and bigger, it is unrealistic to keep the entire Gaia catalog in memory.
-We wrote a simple 'C' program to extract out the 7 fields that we wanted out of the 152 fields,
+We wrote a simple 'C' program to extract out the 7 fields that we wanted out of the 152 fields, 
 create integer values for the RA and DEC for fast searching and put in an easy to access database.<br>
 Then people writing planetarium programs can easily add SQL database calls and retrieve the stars from the database server.<br>
 <br>
@@ -70,39 +71,52 @@ We have done the same thing with the Two Micron All-Sky Survey star catalog (470
 </table>
 
 </center><br>
-This document will explain how to set up an Ubuntu Linux server running MariaDB (or mySQL)
+This document will explain how to set up an Ubuntu Linux server running MariaDB (or mySQL) 
 SQL Server and then implement the Gaia Star Catalog search engine.<br>
-The Gaia DR3 (Data Release 3) catalog has 1.8 BILLION stars. There are 3386 individual ZIP files with over 500,000 records per file
-and 152 fields per record. Of all of that data, we are only interested in 7 fields,
-and then we add two index fields to speed up searching.<br>
-This document will explain how to install an SQL database server that will make the Gaia Star Catalog available to programs
+The Gaia DR3 (Data Release 3) catalog has 1.8 BILLION stars. There are 3386 individual ZIP files with over 500,000 records per file 
+and 152 fields per record. Of all of that data, we are only interested in 7 fields, 
+and then we add two index fields to speed up searching.<br><br>
+You can also do this using SQL servers on other platforms, skip to step 3 and install your SQL server on your platform of choice.
+<br><br>
+This document will explain how to install an SQL database server that will make the Gaia Star Catalog available to programs 
 wanting to display the stars.<br>
-We have done the hard work for you and have created much smaller files with only the needed data and the indexes already created.
+We have done the hard work for you and have created much smaller files with only the needed data and the indexes already created. 
 You only have to download 75 gig of compressed files instead of over 700 gig of compressed files of the original data.
-This then decompresses into 228 gig of SQL data files.
+This then decompresses into 228 gig of SQL data files. 
 These then get loaded into the SQL server, once loaded both the compressed and uncompressed files can be deleted.
 <br><br>
-The first computer we ran the SQL server on was a 2014 Dell desktop with an i7-4770 CPU @ 3.40GHz.
-We installed 32 gig of memory and a SATA attached SSD hard drive. Later we used an NVME SSD hard drive.
+The first computer we ran the SQL server on was a 2014 Dell desktop with an i7-4770 CPU @ 3.40GHz. 
+We installed 32 gig of memory and a SATA attached SSD hard drive. Later we used an NVME SSD hard drive. 
 The NVME hard drive plugs into the CPU motherboard and give you even faster speed than a SATA attached SSD drive.<br>
-We later upgraded to an old (2012) Dell Server class machine with dual Xeon CPU E5-2687W 0 @ 3.10GHz and 256 gig of memory.
-A computer of this class can be bought off of eBay for under $1000.<br>
-Our final configuration has the operating system on a SATA attached SSD and the actual SQL database files on the NVME SSD by itself
-with no other files on that drive. I feel this configuration of having the SQL files on a separate NVME SSD drive is ideal.
+We later upgraded to an old (2012) Dell Server class machine with dual Xeon CPU E5-2687W 0 @ 3.10GHz and 256 gig of memory. 
+A computer of this class can be bought off of eBay for under $1000. This is also our local file server.<br>
+Our final configuration has the operating system on a SATA attached SSD and the actual SQL database files on the NVME SSD by itself 
+with no other files on that drive. I feel this configuration of having the SQL files on a separate NVME SSD drive is ideal. 
 This is especially worthwhile if the computer is used for other things because of how SSD drives age.
 We use the same server as our local file server and have several other SQL databases on it for other uses.
 <br><br>
 
 <! ========================================================================================================= >
 <hr><a name="preface"></a><h1>Preface: How to connect to our server</h1>
-If you would like to connect into my SQL server, either just for testing or you want to use the data but don't want to install the full system,
-contact me at <a href="mailto:ksproul@skychariot.com">ksproul@skychariot.com</a>.
+We have our GAIA SQL Star Server available on the intnet and will allow people to connect to it. 
+The information you need to connect to  server is:<br>
+<ol>
+ <li>Host Name or IP address of the server</li>
+ <li>Port Number, (SQL Default 3306) Move it some other number for security</li>
+ <li>SQL Account Name</li>
+ <li>SQL Account Password</li>
+ <li>Database Name: "gaia" (Case Sensitive)</li>
+</ol>
+
+If you would like to connect into our SQL Gaia Star Server, either just for testing or you want to use the data 
+but don't want to install the full system, contact me at <a href="mailto:ksproul@skychariot.com">ksproul@skychariot.com</a>.
 <br>
 <br>
-If using SkyTravel, see the section on that below <a href="#Appendix4">Appendix 4</a> and contact me so I can get you set up. <br><br>
-If you are writing your own software, get the SQL drivers working and contact me and I will give you the info on how to connect to my server.
+If using SkyTravel, see the section on that below in <a href="#Appendix4">Appendix 4</a> and contact me so I can get you set up. <br><br>
+If you are writing your own software, get the SQL drivers working and contact me and I will give you the info on how to connect to our server.
 <br>
-I would love to have people use my server. I would also love to help people implement install it on your computer too.So, if you are interested, send me email.
+I would love to have people use OUR server. I would also love to help people install it on your computer too. 
+So, if you are interested, please send me email.
 <br>
 <br>
 <a href="#Index">Jump to Index</a>
@@ -113,22 +127,22 @@ I would love to have people use my server. I would also love to help people impl
 <center>
 <table border=6>
  <tr><th colspan=2>Recommend Hardware</th></tr>
- <tr><td>Processor</td>    <td>Intel I-7 or better</td></tr>
- <tr><td>Cores</td>     <td>Eight Cores or more</td></tr>
- <tr><td>Memory</td>     <td>32 gig or more</td></tr>
- <tr><td>Storage</td>    <td>2 TB SSD<br>NVME SSD even better</td></tr>
- <tr><td>Temp Storage</td>   <td>1 TB HD or bigger<br>Not needed after installation done<br>Not absolutely required</td></tr>
+ <tr><td>Processor</td>        <td>Intel I-7 or better</td></tr>
+ <tr><td>Cores</td>         <td>Eight Cores or more</td></tr>
+ <tr><td>Memory</td>         <td>32 gig or more, it will run on less</td></tr>
+ <tr><td>Storage</td>        <td>2 TB SSD<br>NVME SSD even better</td></tr>
+ <tr><td>Temp Storage</td>       <td>1 TB HD or bigger<br>Not needed after installation done<br>Not absolutely required</td></tr>
 
  <tr><th colspan=2>Recommend Software</th></tr>
- <tr><td>Operating System</td>  <td>Ubuntu Linux V 20 or later</td></tr>
- <tr><td>SQL Database Server</td> <td>MariaDB or mySQL</td></tr>
+ <tr><td>Operating System</td>      <td>Ubuntu Linux V 20 or later</td></tr>
+ <tr><td>SQL Database Server</td>     <td>MariaDB or mySQL</td></tr>
 
  <tr><th colspan=2>Download Files</th></tr>
- <tr><td colspan=2>SQL Database definitions and scripts</td></tr>
- <tr><td colspan=2>SQL Database GAIA Data</td></tr>
+ <tr><td>SQL Database definitions and scripts</td> <td>GaiaStarProject.sql</td></tr>
+ <tr><td>SQL Database GAIA Data</td>     <td>Gaia-0.gz - Gaia-7.gz</td></tr>
 </table>
 <br>
-<h2>Download the files from <a href="https://rutgers.box.com/s/u19wmb00o53flfx35ko6r67ay8ojws1y" target="_blank">Gaia SQL Files</a></h2>
+<h2>Download the files from here:<br><a href="https://rutgers.box.com/s/u19wmb00o53flfx35ko6r67ay8ojws1y" target="_blank">Gaia SQL Files</a></h2>
 
 <br><br>
 </center>
@@ -137,8 +151,10 @@ I would love to have people use my server. I would also love to help people impl
 
 <! ========================================================================================================= >
 <hr><a name="Step1"></a><h1>Step 1: Install Linux Operating System</h1>
+
+<h2>Download Ubuntu Linux from here: <a href="http://ubuntu.com"  target="_blank">ubuntu.com</a></h2>
 If you already have a Linux computer running, you can skip to Step 2.<br><br>
-Download the Ubuntu install image onto a USB thumb drive and boot off it. Then install Linux.
+Download the Ubuntu install image onto a USB thumb drive and boot off it. Then install Linux. 
 If you are going to use the computer as a desktop, you can install the version with the GUI interface.
 Otherwise, you can just use the server version and not have a GUI interface on the computer at all.
 This process wipes out the hard drive and gives you a completely clean computer.
@@ -148,8 +164,10 @@ This process wipes out the hard drive and gives you a completely clean computer.
 
 <! ========================================================================================================= >
 <hr><a name="Step2"></a><h1>Step 2: Create Linux Accounts</h1>
-When you install Ubuntu Linux, it creates a ROOT account and what-ever account you give it when you go thru the install procedure. This account will have 'SUDO' privileges. (Super User).<br>
-I would recommend creating another account called GAIA or astronomy or something not assigned to an individual. This account will also need to have SUDO privileges.
+When you install Ubuntu Linux, it creates a ROOT account and what-ever account you give it when you go thru the install procedure. 
+This account will have 'SUDO' privileges. (Super User).<br>
+I would recommend creating another account called GAIA or astronomy or something not assigned to an individual. 
+This account will also need to have SUDO privileges. 
 This is NOT required, you can use the default account.
 <br>
 <br>
@@ -157,14 +175,14 @@ This is NOT required, you can use the default account.
 
 <! ========================================================================================================= >
 <hr><a name="Step3"></a><h1>Step 3: Install SQL Database Server</h1>
-If you created the second Linux account, described above, log into it and do all of your work from that account.
+If you created the second Linux account, described above, log into it and do all of your work from that account. 
 If not, just use the default account you created when you installed Linux.<br>
 Then install either MariaDB or mySQL database servers.
 SQL uses TCP/IP port 3306 by default. If you are putting your server out on the internet, it would be a good idea to move this to a non-standard port to reduce the amount of hack attempts make it to your server.<br>
-If putting on the internet, you should also lock down the server using the Linux "iptables" firewall feature. This is an advanced topic and will be expanded on later<br>
+If putting the server on the internet, you should also lock down the server using the Linux "iptables" firewall feature. This is an advanced topic and will be expanded on later. There are lots of good explanations in iptables on the internet.<br>
 
 This software has been tested on both MariaDB and mySQL. It has not been tested on other SQL platforms but may work with minor modifications.<br>
-<h2 style="color:red"><b>DO NOT INSTALL BOTH!</b></h2>
+<h2 style="color:red"><b>******** DO NOT INSTALL BOTH! ********</b></h2>
 
 If you are going to do a lot with the command line SQL environment, I recombined installing this to give you nice colored output.<br>
 <a href="https://github.com/nitso/colour-mysql-console" target="_blank">https://github.com/nitso/colour-mysql-console</a>
@@ -173,35 +191,65 @@ If you are going to do a lot with the command line SQL environment, I recombined
 <a href="#Index">Jump to Index</a>
 
 <! ========================================================================================================= >
-<hr><a name="Step3A"></a><h1>Step 3-A: Install SQL Database Server (MariaDB)</h1>
-Go to the MariaDB web page <a href="http://mariadb.org" target="_blank">mariadb.org</a> and go thru the install process described there.
+<hr><a name="Step3A"></a><h1>Step 3-A: Install SQL Database Server <b>(MariaDB)</b></h1>
+
+<h2>Donwload MariaDB from here: <a href="http://mariadb.org" target="_blank">mariadb.org</a></h2>
+
+Go to the MariaDB web page and go thru the install process described there.
+<br>
+<br>
+To change the port mariaDB listtens on, edit the config file:
+<pre><code  style="background-color:Yellow">/etc/mysql/mariadb.cnf</code></pre><br>
+and change the <b>port = 3306</b> to some other number.
+<br>
+<br>
+In the file:
+<pre><code  style="background-color:Yellow">/etc/mysql/mariadb.conf.d/50-server.cnf</code></pre><br>
+Change <b>bind-address = 127.0.0.1</b> to <b>bind-address = 0.0.0.0</b><br>
+This makes it so you can talk to the server from other computers.
 <br>
 <br>
 <a href="#Index">Jump to Index</a>
 
 <! ========================================================================================================= >
-<hr><a name="Step3B"></a><h1>Step 3-B: Install SQL Database Server (mySQL)</h1>
-Go to the mySQL web page <a href="http://mysql.org"   target="_blank">mysql.org</a> and go thru the install process described there.
+<hr><a name="Step3B"></a><h1>Step 3-B: Install SQL Database Server <b>(mySQL)</b></h1>
+
+<h2>Donwload mySQL from here: <a href="http://mysql.org"   target="_blank">mysql.org</a></h2>
+
+Go to the mySQL web page and go thru the install process described there.
+<br>
+<br>
+To change the port mySQL listtens on, edit the config file:
+<pre><code  style="background-color:Yellow">/etc/mysql/mysql.conf.d/mysqld.cnf</code></pre><br>
+and change the <b>port = 3306</b> to some other number.<br>
+Also change <b>bind-address = 127.0.0.1</b> to <b>bind-address = 0.0.0.0</b><br>
+This makes it so you can talk to the server from other computers.
 <br>
 <br>
 <a href="#Index">Jump to Index</a>
 
 <! ========================================================================================================= >
 <hr><a name="Step4"></a><h1>Step 4: Create SQL Accounts</h1>
-SQL has a concept of accounts which are different from the Linux user accounts.
-SQL accounts have their own passwords and different accounts can have access to different databases
+SQL has a concept of accounts which are different from the Linux user accounts. 
+SQL accounts have their own passwords and different accounts can have access to different databases 
 and also different levels of access within the database.<br>
 The main SQL account you use will have to have full privileges, but the accounts that actually access the GAIA data will be significantly restricted.<br>
-The software that accesses the GAIA database will use one of these restricted accounts.
+The software that accesses the GAIA database will use one of these restricted accounts. 
 If you have multiple people using the server, give each one their own account.
 That way you can look back later and see who is using it when and how often.
 Each one of these accounts will be significantly restricted so they can ONLY execute the predefined SQL queries.<br>
 <br>
 To run the SQL server type the following: (it is the same command when using MariaDB or mySQL)
 <pre><code  style="background-color:Yellow">
- mysql -u username -p
+ mysql -u username -p 
 </code></pre>
 It will then ask you for the password.<br>
+<br>
+You might have to do this in Super User Mode.
+<pre><code  style="background-color:Yellow">
+ sudo mysql -u username -p 
+</code></pre>
+
 
 To create SQL user accounts type the following for each account: NOTE: You must include the single quotes as shown below!
 <pre><code  style="background-color:Yellow">
@@ -217,16 +265,16 @@ To delete one of these accounts type:
  FLUSH PRIVILEGES;
 </code></pre>
 
-This limits these accounts to ONLY be able to access the 'gaia' database and ONLY execute the predefined SQL scripts.
+This limits these accounts to ONLY be able to access the 'gaia' database and ONLY execute the predefined SQL scripts. 
 They can't even do simple SQL 'select' commands. Therefore they are very limited and secure.<br>
-These are the accounts and passwords you put into the SkyTravel Config file so that when they login into the SQL server.
+These are the accounts and passwords you put into the SkyTravel Config file so that when they login into the SQL server they are authenticated and can access the data.
 <br><br>
 <a href="#Index">Jump to Index</a>
 
 <! ========================================================================================================= >
 <hr><a name="Step5"></a><h1>Step 5: Create GAIA SQL Database</h1>
 
-You can downlod the database files here: <h2>Download the files from <a href="https://rutgers.box.com/s/u19wmb00o53flfx35ko6r67ay8ojws1y" target="_blank">Gaia SQL Files</a></h2>
+<h2>Download the files from here:<br><a href="https://rutgers.box.com/s/u19wmb00o53flfx35ko6r67ay8ojws1y" target="_blank">Gaia SQL Files</a></h2>
 <br>
 
 The first file you want to use is: <b><u>GaiaStarProject.sql</u></b>
@@ -240,7 +288,7 @@ The database consists of 3 tables and a small handful of SQL procedures.<br><br>
  <tr><th colspan=3><h2>Table Descriptions</h2></th></tr>
  <tr><th>Table Name</th> <th># of Records</th> <th>Description</th> </tr>
  <tr><td>Gaia</td>  <th>1.8 Billon<br>1,811,709,771</th> <td>Contains the actual star data, ra,dec,magnitude,color</td></tr>
- <tr><td>grid</td>  <th>64,800<br>(360 * 180)</th><td>A history of what has been looked up, the number times each grid has been accessed,
+ <tr><td>grid</td>  <th>64,800<br>(360 * 180)</th><td>A history of what has been looked up, the number times each grid has been accessed, 
 the last user and the lat time it was accessed</td></tr>
  <tr><td>eventLog</td> <th>Grows</th><td>A Log of every time someone connects and a log of every query made to the server</td></tr>
 </table>
@@ -324,11 +372,11 @@ You then should get an output that looks something like this:
 
 Query OK, 0 rows affected (0.01 sec)
 
-+-----+---------------------+-------------------+---------------+------+------+-----------+----------+-----------------------+------+------+
-| idx | DateTime            | GCUser            | FuncName      | ra   | de   | deltatime | numstars | comment               | Secs | Mins |
-+-----+---------------------+-------------------+---------------+------+------+-----------+----------+-----------------------+------+------+
-|   1 | 2022-08-28 00:57:17 | ksproul@localhost | SetLogComment | NULL | NULL |      NULL |     NULL | GAIA System Installed | NULL | NULL |
-+-----+---------------------+-------------------+---------------+------+------+-----------+----------+-----------------------+------+------+
++-----+---------------------+-------------------+---------------+------+------+-----------+----------+-----------------------+
+| idx | DateTime            | GCUser            | FuncName      | ra   | de   | deltatime | numstars | comment               |
++-----+---------------------+-------------------+---------------+------+------+-----------+----------+-----------------------+
+|   1 | 2022-08-28 00:57:17 | ksproul@localhost | SetLogComment | NULL | NULL |      NULL |     NULL | GAIA System Installed |
++-----+---------------------+-------------------+---------------+------+------+-----------+----------+-----------------------+
 1 row in set (0.00 sec)
 </code></pre>
 <br>
@@ -346,17 +394,17 @@ There are a few SQL scripts needed. Thew were creatred in the above step so they
 <tr><td>GetVersion</td>   <td>nothing</td>   <td>Gaia Version</td>   <td>Currently "Gaia DR3"</td></tr>
 <tr><th colspan=4><h2>Optional SQL Scripts</h2></th></tr>
 <tr><th>Function Name</th>  <th>Arguments passed</th> <th>Returns</th>    <th>Comments</th></tr>
+<tr><td>showfunctions</td>  <td>nothing</td>   <td>List of functions</td>  <td>Shows the functions in this database</td></tr>
 <tr><td>showlastDay</td>  <td>nothing</td>   <td>List of events</td>   <td>Shows the events on the last day used</td></tr>
 <tr><td>showlastMonth</td>  <td>nothing</td>   <td>List of events</td>   <td>Shows the events this month</td></tr>
-<tr><td>showfunctions</td>  <td>nothing</td>   <td>List of functions</td>  <td>Shows the functions in this database</td></tr>
-<tr><td>showUsers</td>   <td>nothing</td>    <td>List of users</td>   <td>Shows who has accessed the system and when</td></tr>
-<tr><td>showGrid</td>   <td>nothing</td>   <td>Grid Stats</td>    <td>Shows ow many grids have been visitid</td></tr>
+<tr><td>showGridUse</td>  <td>nothing</td>   <td>Grid Stats</td>    <td>Shows ow many grids have been visitid</td></tr>
 <tr><td>showGridComments</td> <td>nothing</td>   <td>All Grids with comments</td><td>Shows All the grids that have labels</td></tr>
+<tr><td>showUsers</td>   <td>nothing</td>    <td>List of users</td>   <td>Shows who has accessed the system and when</td></tr>
 <tr><td>UpdateLogFromGrid</td> <td>nothing</td>     <td>Before / After Counts</td> <td>Update the comment field in the Event Log from the comment in the Grid</td></tr >
 <tr><td colspan=4></td></tr>
 <tr><td>GetFirstDate</td>  <td>Username</td>   <td>First Date</td>    <td>Called from showUsers</td></tr>
 <tr><td>GetLastDate</td>  <td>Username</td>   <td>Last Date</td>    <td>Called from showUsers</td></tr>
-<tr><td>GetMilliSeconds</td> <td>nothing</td>   <td>Time in milliseconds</td> <td>Called from showUsers</td></tr>
+<tr><td>GetMilliSeconds</td> <td>nothing</td>   <td>Time in milliseconds</td> <td>Called from GetRaDec, GetDeclination, GetStarFromID</td></tr>
 </table>
 <br>
 <br>
@@ -364,8 +412,7 @@ There are a few SQL scripts needed. Thew were creatred in the above step so they
 
 <! ========================================================================================================= >
 <hr><a name="Step6"></a><h1>Step 6: Upload GAIA SQL Data Files into the database</h1>
-The files you need to download are:
-
+The files you need to download are here:
 <h2><a href="https://rutgers.box.com/s/u19wmb00o53flfx35ko6r67ay8ojws1y" target="_blank">Gaia SQL Files</a></h2>
 <pre><code>
  GaiaStarProject.sql
@@ -378,22 +425,21 @@ The files you need to download are:
  Gaia-5.gz
  Gaia-6.gz
  Gaia-7.gz
-
 </code></pre>
 <! tar -czvkf Gaia-0.tar.gz GaiaSource_0*.sql >
 Put these into a directory and decompress them. Note the directory path you put these in, you will need it in the next step.
 They will expand out into 3386 individual sql files with over 500,000 records per file.<br>
-Uploading the Star data can take eight hours or more, depending on the speed of your computer.
-There is a master file named <b><u>Gaia-Upload-Master.sql</u></b> that loads in the 3386 individual SQL source files.
+Uploading the Star data can take eight hours or more, depending on the speed of your computer. 
+There is a master file named <b><u>Gaia-Upload-Master.sql</u></b> that loads in the 3386 individual SQL source files. 
 <br><br>
 Once you have downloaded the files, decompress them with the following command:
-<pre><code  style="background-color:Yellow">
+<pre><code style="background-color:Yellow">
  tar -xvf Gaia-*.gz
 </code></pre>
 This will create 3386 sql files.
 <br>
 The master file (Gaia-Upload-Master.sql) looks like this:
-<pre><code>
+<pre><code style="background-color:Cyan">
 select current_date,current_time;
 source /path/GaiaSource_000000-003111.sql
 source /path/GaiaSource_003112-005263.sql
@@ -405,15 +451,16 @@ source /path/GaiaSource_785418-786096.sql
 source /path/GaiaSource_786097-786431.sql
 select current_date,current_time;
 </code></pre>
-The SQL system only really knows about fully defined file names.
-You have to go into this file with an editor and replace the file path with the path to your files.
-The first and last lines echo the data and time to the console so you know how long it took to load all of these files.<br>
+The SQL system only really knows about fully defined file names. 
+You have to go into this file with an editor and replace the file path with the path to your files. 
+The first and last lines echo the data and time to the console so you know how long it took to load all of these files.
+<br><br>
 Then when in the SQL program type the following:
 <pre><code  style="background-color:Yellow">
 source  /your-path-here/Gaia-Upload-Master.sql
 </code></pre>
 <br>
-This will start the process to upload the Gaia star data into the SQL server. This can easily take 8 hours.
+This will start the process to upload the Gaia star data into the SQL server. This can easily take 8 hours. 
 There are ways to speed this up on faster computers by breaking this master file into parts and running them under different threads.
 But this is for someone that is more familiar with Linux.
 <br>
@@ -427,7 +474,7 @@ While still running the SQL server, type the following:
 <pre><code  style="background-color:Yellow">
  call GetRaDec(41,89);
 </code></pre>
-This should return 40 stars. (This is the grid with the lowest number of stars in the entire database).
+This should return 40 stars. (This is the grid with the lowest number of stars in the entire database). 
 See the output below in <a href="#Appendix2">Appendix 2.</a>
 <br>
 <br>
@@ -435,36 +482,49 @@ See the output below in <a href="#Appendix2">Appendix 2.</a>
 
 <! ========================================================================================================= >
 <hr><a name="Step8"></a><h1>Step 8: Configure SkyTravel to access the SQL Gaia Server</h1>
-If you are running SkyTravel, the SQL config file is sqlserver.txt
-<pre><code>
+If you are running SkyTravel, the SQL config file is sqlserver.txt 
+<pre><code style="background-color:Cyan">
 ########################################################################
 # this is being set up for expansion to other data bases in the future
 # keywords are all lower case
 # tabs or spaces
 ########################################################################
-server   = your-IP-address
-port   = 3306
+server          =   your-IP-address
+port            =   3306
 # 3306 is the default for SQL servers, if you moved it, this has to be changed
-username  = username1
-password  = password
-gaia_database  = gaia
-database  = gaia
+username        =   username1
+password        =   password
+gaia_database   =   gaia
+database        =   gaia
 # Additonal Databases can be added as long as the SQL calls are identical
 </code></pre>
 <a href="#Index">Jump to Index</a>
 
 <! ========================================================================================================= >
 <hr><a name="Appendix1"></a><h1>Appendix 1: How to access from other software</h1>
-If you want to access the SQL server from other software, you need to figure out how to do remote SQL calls from that software.
+If you want to access the SQL server from other software, you need to figure out how to do remote SQL calls from that software. 
 Most modern programming languages like Python, C++ etc have SQL libraries.<br>
 The calls are simple.<br>
 <ol>
- <li>Establish a connection to the server, specifying the IP address, Port, Username and Password and the database "gaia"</li>
+ <li>Establish a connection to the server, specifying:
+  <ul>
+   <li>IP address</li>
+   <li>Port</li>
+   <li>Username</li>
+   <li>Password</li>
+   <li>Database = 'gaia'</li>
+  </ul>
  <li>Some libraries may have you specify the database when establishing the connection. Others may have you do in the call below.
  The 'C' Library that I use allows you to specify the database either way.</li>
- <li>send  <b>"call GetRaDec(rrr,ddd);"</b> where rrr and ddd or integers of the ra dec of the grid of interest.</li>
+ <li>Send  <b>"call GetRaDec(rrr,ddd);"</b> where rrr and ddd or integers of the ra dec of the grid of interest.</li>
  <li>Receive the data, it will come as rows, with each row having the following fields.</li>
- <li>designation,ra,decl,phot_g_mean_mag,bp_rp</li>
+  <ol>
+   <li>designation</li>
+   <li>ra</li>
+   <li>decl</li>
+   <li>phot_g_mean_mag</li>
+   <li>bp_rp</li>
+  </ol>
  <li>You may get as few as 40 stars or over 1 million stars.</li>
 </ol>
 
@@ -526,23 +586,23 @@ MariaDB [gaia]> call GetRaDec(41,89);
 <h2>Output of "<b><u>call showLastDay;</u></b>" and "<b><u>call showlastMonth;</u></b>"</h2>
 <pre><code>
 MariaDB [gaia]> call showl;
-+-------+---------------------+-----------------+---------------+------+------+-----------+----------+-----------------------------------+------+------+
-| idx   | DateTime            | GCUser          | FuncName      | ra   | de   | deltatime | numstars | comment                           | Secs | Mins |
-+-------+---------------------+-----------------+---------------+------+------+-----------+----------+-----------------------------------+------+------+
-| 58906 | 2022-08-12 21:51:10 | msproul@x.x.x.x | SetLogComment | NULL | NULL |      NULL |     NULL | Mark Sproul (mysqld-8.0/8.0.30)   | NULL | NULL |
-| 58907 | 2022-08-12 21:51:10 | msproul@x.x.x.x | SetLogComment | NULL | NULL |      NULL |     NULL | AlpacaPi - V0.5.1-beta build #147 | NULL | NULL |
-| 58908 | 2022-08-12 21:51:21 | msproul@x.x.x.x | GetRaDec      |  283 |   35 |      5379 |    33190 | NULL                              |    5 |    0 |
-| 58909 | 2022-08-12 21:51:26 | msproul@x.x.x.x | GetRaDec      |  284 |   35 |      4999 |    36800 | NULL                              |    4 |    0 |
-| 58910 | 2022-08-12 21:51:31 | msproul@x.x.x.x | GetRaDec      |  285 |   35 |      4962 |    40100 | NULL                              |    4 |    0 |
-| 58911 | 2022-08-12 21:51:37 | msproul@x.x.x.x | GetRaDec      |  282 |   35 |      5471 |    30072 | NULL                              |    5 |    0 |
-+-------+---------------------+-----------------+---------------+------+------+-----------+----------+-----------------------------------+------+------+
++-------+---------------------+-----------------+---------------+------+------+-----------+----------+-----------------------------------+
+| idx   | DateTime            | GCUser          | FuncName      | ra   | de   | deltatime | numstars | comment                           |
++-------+---------------------+-----------------+---------------+------+------+-----------+----------+-----------------------------------+
+| 58906 | 2022-08-12 21:51:10 | msproul@x.x.x.x | SetLogComment | NULL | NULL |      NULL |     NULL | Mark Sproul (mysqld-8.0/8.0.30)   |
+| 58907 | 2022-08-12 21:51:10 | msproul@x.x.x.x | SetLogComment | NULL | NULL |      NULL |     NULL | AlpacaPi - V0.5.1-beta build #147 |
+| 58908 | 2022-08-12 21:51:21 | msproul@x.x.x.x | GetRaDec      |  283 |   35 |      5379 |    33190 | NULL                              |
+| 58909 | 2022-08-12 21:51:26 | msproul@x.x.x.x | GetRaDec      |  284 |   35 |      4999 |    36800 | NULL                              |
+| 58910 | 2022-08-12 21:51:31 | msproul@x.x.x.x | GetRaDec      |  285 |   35 |      4962 |    40100 | NULL                              |
+| 58911 | 2022-08-12 21:51:37 | msproul@x.x.x.x | GetRaDec      |  282 |   35 |      5471 |    30072 | NULL                              |
++-------+---------------------+-----------------+---------------+------+------+-----------+----------+-----------------------------------+
 </code></pre>
 <br>
 <a href="#Index">Jump to Index</a>
 
 <! ========================================================================================================= >
 <hr><a name="Appendix3"></a><h1>Appendix 3: SQL Helper Programs</h1>
-All of the documentation here is using the SQL server via the command line interface.
+All of the documentation here is using the SQL server via the command line interface. 
 There are many very good GUI client applications that make it much easier to do a lot of the maintenance on the SQL server.
 These programs work with all or most of the SQL servers out there. Below is a list of applications that I know of.<br>
 I do a lot of work and queries using the command line interface but I use the GUI program for writing my SQL scripts. I use TablePlus on my Macintosh.<br>
@@ -571,15 +631,15 @@ SkyTravel is a planetarium program that is part of the AlpacaPi project. AlpacaP
 Alpaca is the next generation of ASCOM and is fully compatible with ASCOM. It uses network based communications instead of the COM architecture used in ASCOM.  Alpaca will run on any platform and any number of computers while ASCOM only runs on a single Windows machine.
 AlpacaPi runs most any flavor of Linux and is targeted at desktop linux and Raspberry-Pi for the controllers.
 <br><br>
-The planetarium program was originally written for the Commodore-64 computer by Dr. Clif Ashcraft and Dr. Frank Covitz in the 1980's.
+The planetarium program was originally written for the Commodore-64 computer by Dr. Clif Ashcraft and Dr. Frank Covitz in the 1980's. 
 Mark Sproul has revived this old program and got it running in Linux and has done major upgrades compared to the original which had only around 1000 stars.
 <br><br>
-Keith Sproul has been doing database programing for over 30 years and has recently started doing SQL databases.
+Keith Sproul has been doing database programing for over 30 years and has recently started doing SQL databases. 
 He had been writing SQL databases with millons of records, so jumping to a Billon records wasn't hard.
-Keith then volunteered to put the Gaia data into an SQL database and make it available to the SkyTravel program.
+Keith then volunteered to put the Gaia data into an SQL database and make it available to the SkyTravel program. 
 Working together with Mark getting this working between our houses was a fun project.
 <br>
-The current configuration has Mark running his full observatory using the SkyTravel program and it connects to the SQL database at Keith's house.
+The current configuration has Mark running his full observatory using the SkyTravel program and it connects to the SQL database at Keith's house. 
 Mark is in North East Pennsylvania and Keith is in New Jersey. We also have someone using this from Oregon.
 <br><br>
 SkyTravel is full open source and is available on Github. <a href="https://github.com/msproul/AlpacaPi/" target="_blank">https://github.com/msproul/AlpacaPi/</a>
@@ -592,7 +652,7 @@ SkyTravel is full open source and is available on Github. <a href="https://githu
 This just FYI info if you are curious.<br><br>
 These are the file sizes of the original data vs what we actually need:
 <table border=6>
- <tr><th colspan=3>File Sizes</th></tr>
+ <tr><th colspan=3><h3>File Sizes</h3></th></tr>
  <tr><th>File Size</th> <th>Description</th><th>Comment</th></tr>
  <tr><td>702 GB</td>  <td>Size of Original Compressed files. (*.gz)<br>
        <a href="http://cdn.gea.esac.esa.int/Gaia/gdr3/gaia_source/" target="_blank">
@@ -608,7 +668,7 @@ These are the file sizes of the original data vs what we actually need:
 <br>
 These are the times it took me to download, decompress, process and then upload all of this data:
 <table border=6>
- <tr><th colspan=2>Processing Times</th></tr>
+ <tr><th colspan=2><h3>Processing Times</h3></th></tr>
  <tr><th>Time (Hours)</th> <th>Description</th></tr>
  <tr><td>8:15</td>   <td>Time to download 3386 files over a 1-gig internet feed</td></tr>
  <tr><td>7:20</td>   <td>Time to decompress 3386 files</td></tr>
@@ -625,7 +685,8 @@ These are the times it took me to download, decompress, process and then upload 
 <hr><a name="Appendix6"></a><h1>Appendix 6: Web Links of interest</h1>
 
 <ul>
- <li><a href="https://gea.esac.esa.int/archive/" target="_blank">GAIA Archive</a></li>
+ <li><a href="https://www.esa.int/" target="_blank">European Space Angency https://www.esa.int/</a></li>
+ <li><a href="https://gea.esac.esa.int/archive/" target="_blank">GAIA DR3 Data Archive</a></li>
  <li><a href="https://irsa.ipac.caltech.edu/Missions/2mass.html" target="_blank">Two Micron All-Sky Survey, or 2MASS</a></li>
  <li><a href="http://www.skychariot.com/dome/" target="_blank">Mark Sproul's Observatory, North East, PA</a></li>
  <li><a href="https://ascom-standards.org/Developer/Alpaca.htm" target="_blank">https://ascom-standards.org/Developer/Alpaca.htm</a></li>
@@ -639,5 +700,5 @@ These are the times it took me to download, decompress, process and then upload 
 
 <hr>
 </body>
-<address> Created 1/7/2022<br>Modified 8/30/2022<br>&copy; Copyright Keith Sproul<br>EMail <a href="mailto:ksproul@skychariot.com">ksproul@skychariot.com</a></address>
+<address> Created 1/7/2022<br>Modified 9/6/2022<br>&copy; Copyright Keith Sproul<br>EMail <a href="mailto:ksproul@skychariot.com">ksproul@skychariot.com</a></address>
 </html>
