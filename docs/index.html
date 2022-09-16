@@ -257,15 +257,15 @@ You might have to do this in Super User Mode.
 
 To create SQL user accounts type the following for each account: NOTE: You must include the single quotes as shown below!
 <pre><code  style="background-color:Yellow">
- CREATE USER 'username1'@'%' IDENTIFIED BY 'NEW_USER_PASSWORD';
- GRANT EXECUTE ON `gaia`.* TO 'username1'@'%';
+ CREATE USER 'username'@'%' IDENTIFIED BY 'NEW_USER_PASSWORD';
+ GRANT EXECUTE ON `gaia`.* TO 'username'@'%';
  FLUSH PRIVILEGES;
 </code></pre>
 
 To delete one of these accounts type:
 
 <pre><code  style="background-color:Yellow">
- DROP USER 'username1'@'%';
+ DROP USER 'username'@'%';
  FLUSH PRIVILEGES;
 </code></pre>
 
@@ -493,12 +493,11 @@ If you are running SkyTravel, the SQL config file is sqlserver.txt
 # keywords are all lower case
 # tabs or spaces
 ########################################################################
-server          =   your-IP-address
+server          =   ip-address-of-your-sql-server
 port            =   3306
 # 3306 is the default for SQL servers, if you moved it, this has to be changed
-username        =   username1
+username        =   username
 password        =   password
-gaia_database   =   gaia
 database        =   gaia
 # Additonal Databases can be added as long as the SQL calls are identical
 </code></pre>
@@ -697,13 +696,13 @@ These are the times it took me to download, decompress, process and then upload 
 <br>
 <table border=6>
  <tr><th colspan=5><h2>GAIA Telescope Timeline</h2></th></tr>
- <tr><th>----- Year -----</th> <th>Data Release</th>      <th>Star Count</th>    <th>Num of Fields</th>   <th>Total Data Size</th></tr>
- <tr><th>Dec  2013</th>   <td colspan=4>Telescope Launched</td></tr>
- <tr><th>Jul  2014</th>   <td colspan=4>Telescope became operational</td></tr>
- <tr><th>Sep  2016</th>   <td>DR1  Data Release 1</td>    <td>1.1 billion stars</td> <td>57 fields per star</td>  <td>&nbsp;</td></tr>
- <tr><th>Apr  2018</th>   <td>DR2  Data Release 2</td>    <td>1.6 billion stars</td> <td>94 fields per star</td>  <td>&nbsp;</td></tr>
- <tr><th>Dec  2020</th>   <td>EDR3 Early Data Release 3</td>   <td>1.8 billion stars</td> <td>99 fields per star</td>  <td>Total = 1.6 terabytes</td></tr>
- <tr bgcolor="Yellow"><th>Jun  2022</th> <td>DR3  Data Release 3</td>  <td>1.8 billion stars</td> <td>152 fields per star</td> <td>Total = 2.1 terabytes</td></tr>
+ <tr><th>----- Year -----</th> <th>Data Release</th>     <th>Star Count</th>     <th>Num of Fields</th>   <th>Total Data Size</th></tr>
+ <tr><th>Dec  2013</th>   <td>Telescope Launched</td>    <td colspan=3>&nbsp;</td></tr>
+ <tr><th>Jul  2014</th>   <td>Telescope became operational</td> <td colspan=3>&nbsp;</td></tr>
+ <tr><th>Sep  2016</th>   <td>DR1  Data Release 1</td>   <td>1.1 billion stars</td>   <td>57 fields per star</td>  <td>&nbsp;</td></tr>
+ <tr><th>Apr  2018</th>   <td>DR2  Data Release 2</td>   <td>1.6 billion stars</td>   <td>94 fields per star</td>  <td>&nbsp;</td></tr>
+ <tr><th>Dec  2020</th>   <td>EDR3 Early Data Release 3</td>  <td>1.8 billion stars</td>   <td>99 fields per star</td>  <td>Total = 1.6 terabytes</td></tr>
+ <tr><th>Jun  2022</th>   <td>DR3  Data Release 3</td>   <td>1.8 billion stars</td>   <td>152 fields per star</td> <td>Total = 2.1 terabytes</td></tr>
  <tr><th><i>Future</i></th>  <td colspan=4>DR4  Data Release 4<br>Most measurements in DR4 are expected to be 1.7 times more precise than DR2; proper motions will be 4.5 times more precise.</td></tr>
  <tr><th><i>Future</i></th>  <td colspan=4>DR5  Data Release 5<br>Data will be 1.4 times more precise than DR4, proper motions will be 2.8 times more precise than DR4.</td></tr>
  <tr><td>&nbsp;</td>    <td colspan=4>We will support DR4 and DR5 when they come out.</td></tr>
@@ -716,6 +715,7 @@ These are the times it took me to download, decompress, process and then upload 
 <hr><a name="Appendix6"></a><h1>Appendix 6: Web Links of Interest</h1>
 
 <table border=3>
+ <tr><th colspan=2><h2>Web Links of Interest</h2></th></tr>
  <tr><th>Description</th>         <th>Web Link</th></tr>
  <tr><td>European Space Angency</td>       <td><a href="https://www.esa.int/"         target="_blank">https://www.esa.int/</a></td></tr>
  <tr><td>GAIA DR3 Data Archive</td>       <td><a href="https://gea.esac.esa.int/archive/"     target="_blank">https://gea.esac.esa.int/archive/</a></td></tr>
