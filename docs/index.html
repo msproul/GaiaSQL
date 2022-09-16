@@ -8,7 +8,7 @@
 <center>
 <a name="Top">
 <table border=6>
-<tr><td align=center><h1>ESA GAIA<br>European Space Agency<br>Global Astrometric Interferometer for Astrophysics</h1> <h2>GAIA Database Project by Mark & Keith Sproul</h2>  <h3> <table> <tr><td>GAIA Docmentation</td> <td><a href="https://gea.esac.esa.int/archive/documentation/GDR3/" target="_blank">https://gea.esac.esa.int/archive/documentation/GDR3/</a></td></tr> <tr><td>GAIA SQL Project Mirror Site&nbsp;&nbsp;</td><td><a href="http://www.skychariot.com/gaia.html" target="_blank">http://www.skychariot.com/gaia.html</a></td></tr> </table> </h3> <br> Mark Sproul <a href="mailto:msproul@skychariot.com">msproul@skychariot.com</a><br> Keith Sproul <a href="mailto:ksproul@skychariot.com">ksproul@skychariot.com</a> <br/><br/> See the article in the September 2022 issue of <a href="https://www.astroleague.org/files/reflector/REFLECTOR%20SEPTEMBER%202022%20final%20pages.pdf"Reflections</a>Reflections</a> Magazine Page 18 <br/><br/> The GAIA Star Project (Data Release 3) has 1.8 BILLION Stars. This is too many to handle easily. We put that data into an SQL Database that is accessible by other programs.<br/>  </td></tr>
+<tr><td align=center><h1>ESA GAIA<br>European Space Agency<br>Global Astrometric Interferometer for Astrophysics</h1> <h2>GAIA Database Project by Mark & Keith Sproul</h2>  <h3> <table> <tr><td>GAIA Docmentation</td> <td><a href="https://gea.esac.esa.int/archive/documentation/GDR3/" target="_blank">https://gea.esac.esa.int/archive/documentation/GDR3/</a></td></tr> <tr><td>GAIA SQL Project Mirror Site&nbsp;&nbsp;</td><td><a href="http://www.skychariot.com/gaia.html" target="_blank">http://www.skychariot.com/gaia.html</a></td></tr> </table> </h3> <br> Mark Sproul <a href="mailto:msproul@skychariot.com">msproul@skychariot.com</a><br> Keith Sproul <a href="mailto:ksproul@skychariot.com">ksproul@skychariot.com</a> <br/><br/> See the article in the September 2022 issue of <a href="https://www.astroleague.org/files/reflector/REFLECTOR%20SEPTEMBER%202022%20final%20pages.pdf"Reflections</a>Reflections</a> Magazine Page 18 <br/><br/> The GAIA Star Project (Data Release 3) has 1.8 BILLION Stars. This is too many to handle easily. We put that data into an SQL Database that is accessible by other programs. <br/><br/> <a href="#Index">Jump to Index</a>  </td></tr>
 <tr><td align=center><br><h2>The Milky Way</h2><br><img  width=1100 src="images/starmap_2020_4k_print.jpg"><br><A href="https://svs.gsfc.nasa.gov/4851">https://svs.gsfc.nasa.gov/4851</a><br><br></td></tr>
 <tr><td align=center><br><h2>Star Count</h2><br><img  width=1100 src="images/StarCount.jpg"><br>Number of Stars per by 1 deg x 1 deg<br/>Counted from GAIA data<br/>&copy; 2022 Keith Sproul<br><br></td></tr>
 <tr><td align=center><img  width=1100 src="images/StarCount2.jpg"><br>Number of Stars per by 1 deg x 1 deg<br/>Counted from GAIA data<br/>&copy; 2022 Keith Sproul<br><br></td></tr>
@@ -26,15 +26,17 @@ The European Space Agency developed the Gaia space observatory to create
 the largest, most precise three-dimensional map of the Milky Way by surveying about 1 percent of the galaxy's 100 billion stars. 
 It was launched in December 2013 and became operational in July 2014. 
 Gaia collected data on almost 2 billion stars: position, brightness, proper motion, and more. 
-The first release of data, information on about 1 billion stars, was in September 2016. The second release of data, 1.6 billion stars, was April 2018.
-The current release (DR3) was released in Summer 2022, and it contains information on 1.8 billion stars.<br><br>
+The first release of data, information on about 1 billion stars, was in September 2016. 
+The second release of data, 1.6 billion stars, was April 2018. We started this project with ERD3 with 1.8 billion stars.
+The current release (DR3) was released June of 2022, and it contains information on 1.8 billion stars and even more fields than ERD3.<br><br>
 Many of us use planetarium programs to learn the night sky or control a telescope for imaging or observing. 
 Many such programs are available, some commercial, some free and open-source, 
-on all platforms, Windows, Mac, Linux, and cell phones.
+on all platforms, Macintosh, Linux, Windows and cell phones.
 <br>
-These planetarium programs usually have star catalogs in them, quite often the Yale Bright Star (9,000 stars), Hipparcos (118,000), and Henry Draper (272,000).
+These planetarium programs usually have star catalogs in them, 
+quite often the Yale Bright Star (9,000 stars), Hipparcos (118,000), and Henry Draper (272,000).
 <br><br>
-The Gaia data is huge, with 152 fields per star and 1.8 billion stars, that is a LOT of data. (2.1 Terabytes) 
+The Gaia data is <b>HUGE</b>, with 152 fields per star and 1.8 billion stars, that is a LOT of data. (2.1 Terabytes) 
 All we want is enough information to be able to display the star, with location, color, and brightness and to do it QUICK. 
 Even though computers are getting bigger and bigger, it is unrealistic to keep the entire Gaia catalog in memory.
 We wrote a simple 'C' program to extract out the 7 fields that we wanted out of the 152 fields, 
@@ -50,24 +52,25 @@ We have done the same thing with the Two Micron All-Sky Survey star catalog (470
 <h1>Index</h1>
 <table border=3>
  <tr><th colspan=4>Installation Steps</th></tr>
- <tr><td><a href="#preface">Preface</a></td>    <td>How to connect to our server</td>  <td colspan=2></td></tr>
- <tr><td><a href="#Step0">Step 0</a></td>    <td>System Requirements</td>    <td colspan=2>Hardware and Software</td> </td></tr>
- <tr><td><a href="#Step1">Step 1</a></td>    <td>Install Linux Operating System</td>  <td>Ubuntu Linux V 20</td>  <td><a href="http://ubuntu.com"  target="_blank">ubuntu.com</a></td></tr>
- <tr><td><a href="#Step2">Step 2</a></td>    <td>Create Linux Accounts</td>    <td colspan=2></td></tr>
- <tr><td><a href="#Step3">Step 3</a></td>    <td>Install Database Server</td>   <td>MariaDB<br>mySQL</td>
+ <tr><td><a href="#Top">Top</a></td>      <td>Jump to Top</td><td colspan=2></td></tr>
+ <tr><td><a href="#preface">Preface</a></td>    <td>How to connect to our server</td>     <td colspan=2></td></tr>
+ <tr><td><a href="#Step0">Step 0</a></td>    <td>System Requirements</td>       <td colspan=2>Hardware and Software</td> </td></tr>
+ <tr><td><a href="#Step1">Step 1</a></td>    <td>Install Linux Operating System</td>     <td>Ubuntu Linux V 20</td>  <td><a href="http://ubuntu.com"  target="_blank">ubuntu.com</a></td></tr>
+ <tr><td><a href="#Step2">Step 2</a></td>    <td>Create Linux Accounts</td>       <td colspan=2></td></tr>
+ <tr><td><a href="#Step3">Step 3</a></td>    <td>Install Database Server</td>      <td>MariaDB<br>mySQL</td>
    <td><a href="http://mariadb.org" target="_blank">mariadb.org</a><br>
     <a href="http://mysql.org"   target="_blank">mysql.org</a></td></tr>
- <tr><td><a href="#Step4">Step 4</a></td>    <td>Create SQL Accounts</td>        <td colspan=2></td></tr>
- <tr><td><a href="#Step5">Step 5</a></td>    <td>Create GAIA SQL Database</td>       <td colspan=2></td></tr>
- <tr><td><a href="#Step7">Step 6</a></td>    <td>Upload GAIA SQL Data Files into the database</td>  <td colspan=2>This will take a LONG time</td></tr>
- <tr><td><a href="#Step7">Step 7</a></td>    <td>Manually test primary SQL function calls</td>   <td colspan=2></td></tr>
- <tr><td><a href="#Step8">Step 8</a></td>    <td>Configure SkyTravel to access the SQL Gaia Server</td> <td colspan=2></td></tr>
- <tr><td><a href="#Appendix1">Appendix 1</a></td>  <td>How to access from other software</td>     <td colspan=2></td></tr>
- <tr><td><a href="#Appendix2">Appendix 2</a></td>  <td>Sample SQL outputs</td>         <td colspan=2></td></tr>
- <tr><td><a href="#Appendix3">Appendix 3</a></td>  <td>SQL Helper Programs</td>        <td colspan=2></td></tr>
- <tr><td><a href="#Appendix4">Appendix 4</a></td>  <td>Alpaca &amp; SkyTravel Planetarium</td>     <td colspan=2></td></tr>
- <tr><td><a href="#Appendix5">Appendix 5&nbsp;</a></td> <td>File Sizes &amp; Process Times</td>      <td colspan=2>Just FYI</td></tr>
- <tr><td><a href="#Appendix6">Appendix 6&nbsp;</a></td> <td>Web Links of interest</td>        <td colspan=2></td></tr>
+ <tr><td><a href="#Step4">Step 4</a></td>    <td>Create SQL Accounts</td>       <td colspan=2></td></tr>
+ <tr><td><a href="#Step5">Step 5</a></td>    <td>Create GAIA SQL Database</td>      <td colspan=2></td></tr>
+ <tr><td><a href="#Step7">Step 6</a></td>    <td>Upload GAIA SQL Data Files into the database</td> <td colspan=2>This will take a LONG time</td></tr>
+ <tr><td><a href="#Step7">Step 7</a></td>    <td>Manually test primary SQL function calls</td>  <td colspan=2></td></tr>
+ <tr><td><a href="#Step8">Step 8</a></td>    <td>Configure SkyTravel to access the Gaia Server</td> <td colspan=2></td></tr>
+ <tr><td><a href="#Appendix1">Appendix 1</a></td>  <td>How to access from other software</td>    <td colspan=2></td></tr>
+ <tr><td><a href="#Appendix2">Appendix 2</a></td>  <td>Sample SQL outputs</td>        <td colspan=2></td></tr>
+ <tr><td><a href="#Appendix3">Appendix 3</a></td>  <td>SQL Helper Programs</td>       <td colspan=2></td></tr>
+ <tr><td><a href="#Appendix4">Appendix 4</a></td>  <td>Alpaca &amp; SkyTravel Planetarium</td>    <td colspan=2></td></tr>
+ <tr><td><a href="#Appendix5">Appendix 5&nbsp;</a></td> <td>File Sizes &amp; Process Times</td>     <td colspan=2>Just FYI</td></tr>
+ <tr><td><a href="#Appendix6">Appendix 6&nbsp;</a></td> <td>Web Links of Interest</td>       <td colspan=2></td></tr>
 </table>
 
 </center><br>
@@ -184,7 +187,8 @@ If putting the server on the internet, you should also lock down the server usin
 This software has been tested on both MariaDB and mySQL. It has not been tested on other SQL platforms but may work with minor modifications.<br>
 <h2 style="color:red"><b>******** DO NOT INSTALL BOTH! ********</b></h2>
 
-If you are going to do a lot with the command line SQL environment, I recombined installing this to give you nice colored output.<br>
+If you are going to do a lot with the command line SQL environment, I recombined installing this to give you nice colored output.
+<br><br>
 <a href="https://github.com/nitso/colour-mysql-console" target="_blank">https://github.com/nitso/colour-mysql-console</a>
 <br>
 <br>
@@ -198,7 +202,7 @@ If you are going to do a lot with the command line SQL environment, I recombined
 Go to the MariaDB web page and go thru the install process described there.
 <br>
 <br>
-To change the port mariaDB listtens on, edit the config file:
+To change the port mariaDB listens on, edit the config file:
 <pre><code  style="background-color:Yellow">/etc/mysql/mariadb.cnf</code></pre><br>
 and change the <b>port = 3306</b> to some other number.
 <br>
@@ -219,7 +223,7 @@ This makes it so you can talk to the server from other computers.
 Go to the mySQL web page and go thru the install process described there.
 <br>
 <br>
-To change the port mySQL listtens on, edit the config file:
+To change the port mySQL listens on, edit the config file:
 <pre><code  style="background-color:Yellow">/etc/mysql/mysql.conf.d/mysqld.cnf</code></pre><br>
 and change the <b>port = 3306</b> to some other number.<br>
 Also change <b>bind-address = 127.0.0.1</b> to <b>bind-address = 0.0.0.0</b><br>
@@ -267,7 +271,7 @@ To delete one of these accounts type:
 
 This limits these accounts to ONLY be able to access the 'gaia' database and ONLY execute the predefined SQL scripts. 
 They can't even do simple SQL 'select' commands. Therefore they are very limited and secure.<br>
-These are the accounts and passwords you put into the SkyTravel Config file so that when they login into the SQL server they are authenticated and can access the data.
+These are the accounts and passwords you put into the SkyTravel Config file so that can log into the SQL server.
 <br><br>
 <a href="#Index">Jump to Index</a>
 
@@ -287,7 +291,7 @@ The database consists of 3 tables and a small handful of SQL procedures.<br><br>
 <table border=6>
  <tr><th colspan=3><h2>Table Descriptions</h2></th></tr>
  <tr><th>Table Name</th> <th># of Records</th> <th>Description</th> </tr>
- <tr><td>Gaia</td>  <th>1.8 Billon<br>1,811,709,771</th> <td>Contains the actual star data, ra,dec,magnitude,color</td></tr>
+ <tr><td>Gaia</td>  <th>1.8 Billion<br>1,811,709,771</th> <td>Contains the actual star data, ra,dec,magnitude,color</td></tr>
  <tr><td>grid</td>  <th>64,800<br>(360 * 180)</th><td>A history of what has been looked up, the number times each grid has been accessed, 
 the last user and the lat time it was accessed</td></tr>
  <tr><td>eventLog</td> <th>Grows</th><td>A Log of every time someone connects and a log of every query made to the server</td></tr>
@@ -397,7 +401,7 @@ There are a few SQL scripts needed. Thew were creatred in the above step so they
 <tr><td>showfunctions</td>  <td>nothing</td>   <td>List of functions</td>  <td>Shows the functions in this database</td></tr>
 <tr><td>showlastDay</td>  <td>nothing</td>   <td>List of events</td>   <td>Shows the events on the last day used</td></tr>
 <tr><td>showlastMonth</td>  <td>nothing</td>   <td>List of events</td>   <td>Shows the events this month</td></tr>
-<tr><td>showGridUse</td>  <td>nothing</td>   <td>Grid Stats</td>    <td>Shows ow many grids have been visitid</td></tr>
+<tr><td>showGridUse</td>  <td>nothing</td>   <td>Grid Stats</td>    <td>Shows ow many grids have been visited</td></tr>
 <tr><td>showGridComments</td> <td>nothing</td>   <td>All Grids with comments</td><td>Shows All the grids that have labels</td></tr>
 <tr><td>showUsers</td>   <td>nothing</td>    <td>List of users</td>   <td>Shows who has accessed the system and when</td></tr>
 <tr><td>UpdateLogFromGrid</td> <td>nothing</td>     <td>Before / After Counts</td> <td>Update the comment field in the Event Log from the comment in the Grid</td></tr >
@@ -428,7 +432,7 @@ The files you need to download are here:
 </code></pre>
 <! tar -czvkf Gaia-0.tar.gz GaiaSource_0*.sql >
 Put these into a directory and decompress them. Note the directory path you put these in, you will need it in the next step.
-They will expand out into 3386 individual sql files with over 500,000 records per file.<br>
+They will expand out into 3386 individual SQL files with over 500,000 records per file.<br>
 Uploading the Star data can take eight hours or more, depending on the speed of your computer. 
 There is a master file named <b><u>Gaia-Upload-Master.sql</u></b> that loads in the 3386 individual SQL source files. 
 <br><br>
@@ -516,7 +520,7 @@ The calls are simple.<br>
   </ul>
  <li>Some libraries may have you specify the database when establishing the connection. Others may have you do in the call below.
  The 'C' Library that I use allows you to specify the database either way.</li>
- <li>Send  <b>"call GetRaDec(rrr,ddd);"</b> where rrr and ddd or integers of the ra dec of the grid of interest.</li>
+ <li>Send  <b>"call GetRaDec(rrr,ddd);"</b>  where rrr and ddd are integers of the Right Ascension and Declination of the grid of interest.</li>
  <li>Receive the data, it will come as rows, with each row having the following fields.</li>
   <ol>
    <li>designation</li>
@@ -605,44 +609,56 @@ MariaDB [gaia]> call showl;
 All of the documentation here is using the SQL server via the command line interface. 
 There are many very good GUI client applications that make it much easier to do a lot of the maintenance on the SQL server.
 These programs work with all or most of the SQL servers out there. Below is a list of applications that I know of.<br>
-I do a lot of work and queries using the command line interface but I use the GUI program for writing my SQL scripts. I use TablePlus on my Macintosh.<br>
-I have used DBeaver and mySQL workbench and they work good too.
+I do a lot of work and queries using the command line interface but I use the GUI program for writing my SQL scripts. 
+I use TablePlus on my Macintosh.<br>
+I have used DBeaver and mySQL workbench and they work good too.<br>
+If using an SQL server from the command line, the <b>colour-mysql-console</b> works very well, showing the tables and columns in different colors.
 <br>
 <br>
 <table border=6>
- <tr><th>Application</th>  <th>Mac</th> <th>Windows</th> <th>Linux</th> <th>Cost</th> <th>Link</th></tr>
- <tr><td>mySQL Workbench</td> <th>X</th>  <th>X</th>   <th>X</th>  <th>Free</th> <td><a href="https://dev.mysql.com/downloads/workbench/"  target="_blank">dev.mysql.com/downloads/workbench/</a></td></tr>
- <tr><td>phpMyAdmin</td>   <th>X</th>  <th>X</th>   <th>X</th>  <th>Free</th> <td><a href="https://www.phpmyadmin.net/" target="_blank">phpmyadmin.net</a></td></tr>
- <tr><td>SequelPro</td>   <th>X</th>  <th></th>   <th></th>  <th>Free</th> <td><a href="https://www.sequelpro.com/" target="_blank">sequelpro.com</a></td></tr>
- <tr><td>TablePlus</td>   <th>X</th>  <th>X</th>   <th></th>  <th>$79</th> <td><a href="https://tableplus.com/"  target="_blank">tableplus.com</a> * I use this one *</td></tr>
- <tr><td>DBeaver</td>   <th>X</th>  <th>X</th>   <th>X</th>  <th>$99</th> <td><a href="https://dbeaver.com/"   target="_blank">dbeaver.com</a></td></tr>
+ <tr><th>Application</th> <th>&nbsp;Mac&nbsp;</th> <th>&nbsp;Windows&nbsp;</th> <th>&nbsp;Linux&nbsp;</th> <th>&nbsp;Cost&nbsp;</th> <th>Link</th>                             <th>Comments</th></tr>
+ <tr><td>mySQL Workbench</td>  <th>X</th>  <th>X</th>   <th>X</th>  <th>Free</th> <td><a href="https://dev.mysql.com/downloads/workbench/" target="_blank">dev.mysql.com/downloads/workbench/</a></td>   <td></td></tr>
+ <tr><td>phpMyAdmin</td>    <th>X</th>  <th>X</th>   <th>X</th>  <th>Free</th> <td><a href="https://www.phpmyadmin.net/"     target="_blank">www.phpmyadmin.net</a></td>       <td></td></tr>
+ <tr><td>SequelPro</td>    <th>X</th>  <th></th>   <th></th>  <th>Free</th> <td><a href="https://www.sequelpro.com/"     target="_blank">sequelpro.com</a></td>        <td></td></tr>
+ <tr><td>colour-mysql-console</td> <th></th>  <th></th>   <th>X</th>  <th>Free</th> <td><a href="https://github.com/nitso/colour-mysql-console" target="_blank">github.com/nitso/colour-mysql-console</a></td>  <td>* I use this for command line SQL *</td></tr>
+ <tr><td>TablePlus</td>    <th>X</th>  <th>X</th>   <th></th>  <th>$79</th> <td><a href="https://tableplus.com/"      target="_blank">tableplus.com</a></td>        <td>* I use this one on my Mac *</td></tr>
+ <tr><td>DBeaver</td>    <th>X</th>  <th>X</th>   <th>X</th>  <th>$99</th> <td><a href="https://dbeaver.com/"       target="_blank">dbeaver.com</a></td>        <td></td></tr>
+ <tr><td>SQLPro Studio</td>   <th>X</the>  <th></th>   <th></th>  <th>$129</th> <td><a href="https://www.sqlprostudio.com/"     target="_blank">www.sqlprostudio.com/</a></td>      <td></td></tr>
 </table>
-
 <br>
-Here is a site with more information on other GUI tools for SQL servers.<br>
-<h3><a href="https://codingsight.com/10-best-mysql-gui-tools/" target="_blank">https://codingsight.com/10-best-mysql-gui-tools/</a></h3>
+Here are sites with more information on other GUI tools for SQL servers.<br>
+<h3>
+ <ul>
+  <li><a href="https://codingsight.com/10-best-mysql-gui-tools/" target="_blank">https://codingsight.com/10-best-mysql-gui-tools/</a></li>
+  <li><a href="https://www.eversql.com/top-7-mysql-gui-tools-for-windows/" target="_blank">https://www.eversql.com/top-7-mysql-gui-tools-for-windows/</a></li>
+  <li><a href="https://catalins.tech/best-mysql-clients-mac" target="_blank">https://catalins.tech/best-mysql-clients-mac</a></li>
+ </ul>
+</h3>  
 <br>
 <a href="#Index">Jump to Index</a>
 <! ========================================================================================================= >
 <hr><a name="Appendix4"></a><h1>Appendix 4: Alpaca Pi Project &amp; SkyTravel Planetarium</h1>
 
-SkyTravel is a planetarium program that is part of the AlpacaPi project. AlpacaPi is a full observatory control system based on the Alpaca Protocol <a href="https://ascom-standards.org/Developer/Alpaca.htm" target="_blank">(https://ascom-standards.org/Developer/Alpaca.htm).</a>
+SkyTravel is a planetarium program that is part of the AlpacaPi project. 
+AlpacaPi is a full observatory control system based on the Alpaca Protocol <a href="https://ascom-standards.org/Developer/Alpaca.htm" target="_blank">(https://ascom-standards.org/Developer/Alpaca.htm).</a>
 <br><br>
-Alpaca is the next generation of ASCOM and is fully compatible with ASCOM. It uses network based communications instead of the COM architecture used in ASCOM.  Alpaca will run on any platform and any number of computers while ASCOM only runs on a single Windows machine.
-AlpacaPi runs most any flavor of Linux and is targeted at desktop linux and Raspberry-Pi for the controllers.
+Alpaca is the next generation of ASCOM and is fully compatible with ASCOM. 
+It uses network based communications instead of the COM architecture used in ASCOM.  
+Alpaca will run on any platform and any number of computers while ASCOM only runs on a single Windows machine.
+AlpacaPi runs most any flavor of Linux and is targeted at desktop Linux and Raspberry-Pi for the controllers.
 <br><br>
-The planetarium program was originally written for the Commodore-64 computer by Dr. Clif Ashcraft and Dr. Frank Covitz in the 1980's. 
+The SkyTravel program was originally written for the Commodore-64 computer by Dr. Clif Ashcraft and Dr. Frank Covitz in the 1980's. 
 Mark Sproul has revived this old program and got it running in Linux and has done major upgrades compared to the original which had only around 1000 stars.
 <br><br>
 Keith Sproul has been doing database programing for over 30 years and has recently started doing SQL databases. 
-He had been writing SQL databases with millons of records, so jumping to a Billon records wasn't hard.
+He had been writing SQL databases with millions of records, so jumping to a Billion records wasn't hard.
 Keith then volunteered to put the Gaia data into an SQL database and make it available to the SkyTravel program. 
-Working together with Mark getting this working between our houses was a fun project.
+Working together with Mark getting this running between our houses was a fun project.
 <br>
 The current configuration has Mark running his full observatory using the SkyTravel program and it connects to the SQL database at Keith's house. 
 Mark is in North East Pennsylvania and Keith is in New Jersey. We also have someone using this from Oregon.
-<br><br>
-SkyTravel is full open source and is available on Github. <a href="https://github.com/msproul/AlpacaPi/" target="_blank">https://github.com/msproul/AlpacaPi/</a>
+SkyTravel is full open source and is available on Github. 
+<a href="https://github.com/msproul/AlpacaPi/" target="_blank">https://github.com/msproul/AlpacaPi/</a>
 <br>
 <br>
 <a href="#Index">Jump to Index</a>
@@ -652,7 +668,7 @@ SkyTravel is full open source and is available on Github. <a href="https://githu
 This just FYI info if you are curious.<br><br>
 These are the file sizes of the original data vs what we actually need:
 <table border=6>
- <tr><th colspan=3><h3>File Sizes</h3></th></tr>
+ <tr><th colspan=3><h2>File Sizes</h2></th></tr>
  <tr><th>File Size</th> <th>Description</th><th>Comment</th></tr>
  <tr><td>702 GB</td>  <td>Size of Original Compressed files. (*.gz)<br>
        <a href="http://cdn.gea.esac.esa.int/Gaia/gdr3/gaia_source/" target="_blank">
@@ -668,7 +684,7 @@ These are the file sizes of the original data vs what we actually need:
 <br>
 These are the times it took me to download, decompress, process and then upload all of this data:
 <table border=6>
- <tr><th colspan=2><h3>Processing Times</h3></th></tr>
+ <tr><th colspan=2><h2>Processing Times</h2></th></tr>
  <tr><th>Time (Hours)</th> <th>Description</th></tr>
  <tr><td>8:15</td>   <td>Time to download 3386 files over a 1-gig internet feed</td></tr>
  <tr><td>7:20</td>   <td>Time to decompress 3386 files</td></tr>
@@ -679,19 +695,38 @@ These are the times it took me to download, decompress, process and then upload 
 </table>
 <br>
 <br>
+<table border=6>
+ <tr><th colspan=5><h2>GAIA Telescope Timeline</h2></th></tr>
+ <tr><th>----- Year -----</th> <th>Data Release</th>      <th>Star Count</th>    <th>Num of Fields</th>   <th>Total Data Size</th></tr>
+ <tr><th>Dec  2013</th>   <td colspan=4>Telescope Launched</td></tr>
+ <tr><th>Jul  2014</th>   <td colspan=4>Telescope became operational</td></tr>
+ <tr><th>Sep  2016</th>   <td>DR1  Data Release 1</td>    <td>1.1 billion stars</td> <td>57 fields per star</td>  <td>&nbsp;</td></tr>
+ <tr><th>Apr  2018</th>   <td>DR2  Data Release 2</td>    <td>1.6 billion stars</td> <td>94 fields per star</td>  <td>&nbsp;</td></tr>
+ <tr><th>Dec  2020</th>   <td>EDR3 Early Data Release 3</td>   <td>1.8 billion stars</td> <td>99 fields per star</td>  <td>Total = 1.6 terabytes</td></tr>
+ <tr bgcolor="Yellow"><th>Jun  2022</th> <td>DR3  Data Release 3</td>  <td>1.8 billion stars</td> <td>152 fields per star</td> <td>Total = 2.1 terabytes</td></tr>
+ <tr><th><i>Future</i></th>  <td colspan=4>DR4  Data Release 4<br>Most measurements in DR4 are expected to be 1.7 times more precise than DR2; proper motions will be 4.5 times more precise.</td></tr>
+ <tr><th><i>Future</i></th>  <td colspan=4>DR5  Data Release 5<br>Data will be 1.4 times more precise than DR4, proper motions will be 2.8 times more precise than DR4.</td></tr>
+ <tr><td>&nbsp;</td>    <td colspan=4>We will support DR4 and DR5 when they come out.</td></tr>
+</table>
+<br>
+<br>
 <a href="#Index">Jump to Index</a>
 
 <! ========================================================================================================= >
-<hr><a name="Appendix6"></a><h1>Appendix 6: Web Links of interest</h1>
+<hr><a name="Appendix6"></a><h1>Appendix 6: Web Links of Interest</h1>
 
-<ul>
- <li><a href="https://www.esa.int/" target="_blank">European Space Angency https://www.esa.int/</a></li>
- <li><a href="https://gea.esac.esa.int/archive/" target="_blank">GAIA DR3 Data Archive</a></li>
- <li><a href="https://irsa.ipac.caltech.edu/Missions/2mass.html" target="_blank">Two Micron All-Sky Survey, or 2MASS</a></li>
- <li><a href="http://www.skychariot.com/dome/" target="_blank">Mark Sproul's Observatory, North East, PA</a></li>
- <li><a href="https://ascom-standards.org/Developer/Alpaca.htm" target="_blank">https://ascom-standards.org/Developer/Alpaca.htm</a></li>
- <li><a href="https://github.com/msproul/AlpacaPi/" target="_blank">https://github.com/msproul/AlpacaPi/</a></li>
-</ul>
+<table border=3>
+ <tr><th>Description</th>         <th>Web Link</th></tr>
+ <tr><td>European Space Angency</td>       <td><a href="https://www.esa.int/"         target="_blank">https://www.esa.int/</a></td></tr>
+ <tr><td>GAIA DR3 Data Archive</td>       <td><a href="https://gea.esac.esa.int/archive/"     target="_blank">https://gea.esac.esa.int/archive/</a></td></tr>
+ <tr><td>GAIA Wikipedia</td>         <td><a href="https://en.wikipedia.org/wiki/Gaia_(spacecraft)" target="_blank">https://en.wikipedia.org/wiki/Gaia_(spacecraft)</a></td></tr>
+ <tr><td>Two Micron All-Sky Survey  (2MASS)</td>    <td><a href="https://irsa.ipac.caltech.edu/Missions/2mass.html" target="_blank">https://irsa.ipac.caltech.edu/Missions/2mass.html</a></td></tr>
+ <tr><td>Mark Sproul's Observatory, North East, PA</td>  <td><a href="http://www.skychariot.com/dome/"     target="_blank">http://www.skychariot.com/dome/</a></td></tr>
+ <tr><td>Alpaca Standards</td>        <td><a href="https://ascom-standards.org/Developer/Alpaca.htm" target="_blank">ttps://ascom-standards.org/Developer/Alpaca.htm</a></td></tr>
+ <tr><td>Mark Sproul's Skychariot Obseratory Program</td> <td><a href="https://github.com/msproul/AlpacaPi/"    target="_blank">https://github.com/msproul/AlpacaPi/</a></td></tr>
+</table>
+<br>
+<br>
 <a href="#Index">Jump to Index</a><br>
 <a href="#Top">Jump to Top</a>
 <! ========================================================================================================= >
@@ -700,5 +735,5 @@ These are the times it took me to download, decompress, process and then upload 
 
 <hr>
 </body>
-<address> Created 1/7/2022<br>Modified 9/6/2022<br>&copy; Copyright Keith Sproul<br>EMail <a href="mailto:ksproul@skychariot.com">ksproul@skychariot.com</a></address>
+<address> Created 1/7/2022<br>Modified 9/15/2022<br>&copy; Copyright Keith Sproul<br>EMail <a href="mailto:ksproul@skychariot.com">ksproul@skychariot.com</a></address>
 </html>
