@@ -3,7 +3,7 @@
 <! Webpages (C) Copyright  2001 - 2022 Keith Sproul>
 <! Keith Sproul, North Brunswick NJ ksproul@skychariot.com>
 <html>
-<head><title>GAIA Star Database</title></head>
+<head><title>SQL Database Star Catalog  Project</title></head>
 <body>
 <center>
 <a name="Top">
@@ -13,8 +13,8 @@
 <h1>Gaia Star Catalog SQL Database Project</h1>
 <h2>by Mark & Keith Sproul</h2>
 <br/>
-<h2>European Space Agency<br/>Global Astrometric Interferometer for Astrophysics<br/>
-<h3>
+<h4>Using the GAIA Telescope Data<br/>European Space Agency<br/>Global Astrometric Interferometer for Astrophysics<br/>
+<h4>
 <table>
 <tr><td>GAIA Docmentation</td> <td><a href="https://gea.esac.esa.int/archive/documentation/GDR3/" target="_blank">https://gea.esac.esa.int/archive/documentation/GDR3/</a></td></tr>
 <tr><td>GAIA SQL Project Mirror Site&nbsp;&nbsp;</td><td><a href="http://www.skychariot.com/gaia.html" target="_blank">http://www.skychariot.com/gaia.html</a></td></tr>
@@ -30,7 +30,8 @@ See the article in the September 2022 issue of <a href="https://www.astroleague.
 <hr>
 <h1>Abstract</h1>
 <h3>The GAIA Star Catalog (Data Release 3) has 1.8 BILLION Stars.<br/>
-That is too many to handle easily. We put that data into an SQL Database that is accessible by other programs.</h3>
+<i>That is too many to handle easily.</i><br>
+We put that data into an SQL Database that is accessible by other programs.</h3>
 </center>
 The European Space Agency developed the Gaia space observatory to create
 the largest, most precise three-dimensional map of the Milky Way by surveying about 1 percent of the galaxy's 100 billion stars. 
@@ -84,9 +85,10 @@ Gaia has announced DR4 and DR5. We will implment them when they are released.
  <tr><td><a href="#Appendix2">Appendix 2</a></td>  <td>Sample SQL outputs</td>        <td colspan=2></td></tr>
  <tr><td><a href="#Appendix3">Appendix 3</a></td>  <td>SQL Helper Programs</td>       <td colspan=2></td></tr>
  <tr><td><a href="#Appendix4">Appendix 4</a></td>  <td>Alpaca &amp; SkyTravel Planetarium</td>    <td colspan=2></td></tr>
- <tr><td><a href="#Appendix5">Appendix 5&nbsp;</a></td> <td>File Sizes &amp; Process Times</td>     <td colspan=2>Just FYI</td></tr>
- <tr><td><a href="#Appendix6">Appendix 6&nbsp;</a></td> <td>Web Links of Interest</td>       <td colspan=2></td></tr>
- <tr><td><a href="#Appendix7">Appendix 7&nbsp;</a></td> <td>Appendix 7: Pictures of interest</td>    <td colspan=2></td></tr>
+ <tr><td><a href="#Appendix5">Appendix 5</a></td>  <td>File Sizes &amp; Process Times</td>     <td colspan=2>Just FYI</td></tr>
+ <tr><td><a href="#Appendix6">Appendix 6</a></td>  <td>Our Current Implentation</td>      <td colspan=2></td></tr>
+ <tr><td><a href="#Appendix7">Appendix 7</a></td>  <td>Web Links of Interest</td>       <td colspan=2></td></tr>
+ <tr><td><a href="#Appendix8">Appendix 8&nbsp;</a></td> <td>Appendix 7: Pictures of interest</td>    <td colspan=2></td></tr>
  <tr bgcolor="Yellow"> <th colspan=4>Text in Yellow are commands you type.</th></tr>
  <tr bgcolor="Cyan">  <th colspan=4>Text in Cyan is contents of files or file names.</th></tr>
 </table>
@@ -166,10 +168,6 @@ So, if you are interested, please send me email.
  <tr><td>SQL Database definitions and scripts</td> <td>GaiaStarProject.sql</td></tr>
  <tr><td>SQL Database GAIA Data</td>     <td>Gaia-0.gz - Gaia-7.gz</td></tr>
 </table>
-<br/>
-<h2>Download the files from here:<br/><a href="https://rutgers.box.com/s/u19wmb00o53flfx35ko6r67ay8ojws1y" target="_blank">Gaia SQL Files</a></h2>
-
-<br/><br/>
 </center>
 <br/>
 <a href="#Index">Jump to Index</a>
@@ -735,9 +733,32 @@ These are the times it took me to download, decompress, process and then upload 
 <br/>
 <br/>
 <a href="#Index">Jump to Index</a>
-
 <! ========================================================================================================= >
-<hr><a name="Appendix6"></a><h1>Appendix 6: Web Links of Interest</h1>
+<hr><a name="Appendix6"></a><h1>Our Current Implentation</h1>
+We currently have the following databases on our SQL server:
+<table border=6>
+ <tr><td>GDR1</td> <td>Gaia Data Release 1</td>  <td>1.1 Billion Stars</td></tr>
+ <tr><td>GDR2</td> <td>Gaia Data Release 2</td>  <td>1.6 Billion Stars</td></tr>
+ <tr><td>GDR3</td> <td>Gaia Data Release 3</td>  <td>1.8 Billion Stars</td></tr>
+ <tr><td>2Mass</td> <td>2 Micron All Sky Catalog</td> <td>470 Million Stars</td></tr>
+</table>
+<pre><code>
++---+--------+-------+--------+---------------+--------------------------------------------------------+------------------------------------------+
+| # | DBName | Files | Fields | Stars         | Source                                                 | Comment                                  |
++---+--------+-------+--------+---------------+--------------------------------------------------------+------------------------------------------+
+| 1 | gdr1   |  5231 |     57 | 1,142,679,769 | http://cdn.gea.esac.esa.int/Gaia/gdr1/gaia_source/csv/ | Gaia DR1 Data Release 1 Released 2016-09 |
+| 2 | gdr2   | 61234 |     94 | 1,692,919,135 | http://cdn.gea.esac.esa.int/Gaia/gdr2/gaia_source/csv/ | Gaia DR2 Data Release 2 Released 2018-04 |
+| 3 | gaia   |  3386 |    152 | 1,810,666,859 | http://cdn.gea.esac.esa.int/Gaia/gdr3/gaia_source/     | Gaia DR3 Data Release 3 Released 2022-06 |
+| 4 | 2mass  |    93 |     60 |   470,992,970 | https://irsa.ipac.caltech.edu/Missions/2mass.html      | 2Mass 2 Micron All Sky Survey            |
++---+--------+-------+--------+---------------+--------------------------------------------------------+------------------------------------------+
+</code></pre>
+
+You can access all of these with just one account.
+<br/>
+<br/>
+<a href="#Index">Jump to Index</a>
+<! ========================================================================================================= >
+<hr><a name="Appendix7"></a><h1>Appendix 6: Web Links of Interest</h1>
 
 <table border=3>
  <tr><th>Description</th>         <th>Web Link</th></tr>
@@ -747,7 +768,7 @@ These are the times it took me to download, decompress, process and then upload 
  <tr><td>Two Micron All-Sky Survey  (2MASS)</td>    <td><a href="https://irsa.ipac.caltech.edu/Missions/2mass.html" target="_blank">https://irsa.ipac.caltech.edu/Missions/2mass.html</a></td></tr>
  <tr><td>Mark Sproul's Observatory, North East, PA</td>  <td><a href="http://www.skychariot.com/dome/"     target="_blank">http://www.skychariot.com/dome/</a></td></tr>
  <tr><td>Alpaca Standards</td>        <td><a href="https://ascom-standards.org/Developer/Alpaca.htm" target="_blank">ttps://ascom-standards.org/Developer/Alpaca.htm</a></td></tr>
- <tr><td>Mark Sproul's Skytravel Obseratory Program</td> <td><a href="https://github.com/msproul/AlpacaPi/"    target="_blank">https://github.com/msproul/AlpacaPi/</a></td></tr>
+ <tr><td>Mark Sproul's Skytravel Obseratory Program</td>  <td><a href="https://github.com/msproul/AlpacaPi/"    target="_blank">https://github.com/msproul/AlpacaPi/</a></td></tr>
 </table>
 <br/>
 <br/>
@@ -755,14 +776,14 @@ These are the times it took me to download, decompress, process and then upload 
 <a href="#Top">Jump to Top</a>
 <! ========================================================================================================= >
 
-<hr><a name="Appendix7"></a><h1>Appendix 7: Pictures of interest</h1>
+<hr><a name="Appendix8"></a><h1>Appendix 7: Pictures of interest</h1>
 <table border=6>
 <tr><td align=center><br><h2>The Milky Way</h2><br><img  width=1200 src="images/starmap_2020_4k_print.jpg"><br><A href="https://svs.gsfc.nasa.gov/4851">https://svs.gsfc.nasa.gov/4851</a><br><br></td></tr>
 <tr><td align=center><br><h2>Star Count</h2><br><img  width=1200 src="images/StarCount.jpg"><br>Number of Stars per by 1 deg x 1 deg<br/>Counted from GAIA data<br/>&copy; 2022 Keith Sproul<br><br></td></tr>
 <tr><td align=center><img  width=1200 src="images/StarCount2.jpg"><br>Number of Stars per by 1 deg x 1 deg<br/>Counted from GAIA data<br/>&copy; 2022 Keith Sproul<br><br></td></tr>
-<tr><td align=center><br><h2>Andromeda Gaia Data Relase 1</h2> <h3>SkyTravel Program showing M-31 Andromeda with all stars turned on<br/>Using the GAIA SQL Database 1</h3><br><img  width=1200 src="images/Andromeda-GDR1.jpg"></td></tr>
-<tr><td align=center><br><h2>Andromeda Gaia Data Relase 2</h2> <h3>SkyTravel Program showing M-31 Andromeda with all stars turned on<br/>Using the GAIA SQL Database 2</h3><br></td></tr>
-<tr><td align=center><br><h2>Andromeda Gaia Data Relase 3</h2> <h3>SkyTravel Program showing M-31 Andromeda with all stars turned on<br/>Using the GAIA SQL Database 3</h3><br><img  width=1200 src="images/Andromeda-GDR3.jpg"></td></tr>
+<tr><td align=center><br><h2>Andromeda Gaia Data Relase 1</h2> <h3>SkyTravel Program showing M-31 Andromeda with all stars turned on<br/>Using the GAIA SQL Database 1<br/>75,215 Stars in 3 dex by 3 deg grid</h3><br><img  width=1200 src="images/Andromeda-GDR1.jpg"></td></tr>
+<tr><td align=center><br><h2>Andromeda Gaia Data Relase 2</h2> <h3>SkyTravel Program showing M-31 Andromeda with all stars turned on<br/>Using the GAIA SQL Database 2<br/> ? Stars in 3 dex by 3 deg grid</h3><br></td></tr>
+<tr><td align=center><br><h2>Andromeda Gaia Data Relase 3</h2> <h3>SkyTravel Program showing M-31 Andromeda with all stars turned on<br/>Using the GAIA SQL Database 3<br/> 132,092 Stars in 3 dex by 3 deg grid</h3><br><img  width=1200 src="images/Andromeda-GDR3.jpg"></td></tr>
 </table>
 <a href="#Top">Jump to Top</a>
 
@@ -771,5 +792,5 @@ These are the times it took me to download, decompress, process and then upload 
 
 <hr>
 </body>
-<address> Created 1/7/2022<br>Modified 9/24/2022<br>&copy; Copyright Keith Sproul<br>EMail <a href="mailto:ksproul@skychariot.com">ksproul@skychariot.com</a></address>
+<address> Created 1/7/2022<br>Modified 9/27/2022<br>&copy; Copyright Keith Sproul<br>EMail <a href="mailto:ksproul@skychariot.com">ksproul@skychariot.com</a></address>
 </html>
