@@ -86,9 +86,10 @@ Gaia has announced DR4 and DR5. We will implment them when they are released.
  <tr><td><a href="#Appendix3">Appendix 3</a></td>  <td>SQL Helper Programs</td>       <td colspan=2></td></tr>
  <tr><td><a href="#Appendix4">Appendix 4</a></td>  <td>Alpaca &amp; SkyTravel Planetarium</td>    <td colspan=2></td></tr>
  <tr><td><a href="#Appendix5">Appendix 5</a></td>  <td>File Sizes &amp; Process Times</td>     <td colspan=2>Just FYI</td></tr>
- <tr><td><a href="#Appendix6">Appendix 6</a></td>  <td>Our Current Implentation</td>      <td colspan=2></td></tr>
+ <tr><td><a href="#Appendix6">Appendix 6</a></td>  <td>Our Current Databases</td>      <td colspan=2></td></tr>
  <tr><td><a href="#Appendix7">Appendix 7</a></td>  <td>Web Links of Interest</td>       <td colspan=2></td></tr>
- <tr><td><a href="#Appendix8">Appendix 8&nbsp;</a></td> <td>Appendix 7: Pictures of interest</td>    <td colspan=2></td></tr>
+ <tr><td><a href="#Appendix8">Appendix 8&nbsp;</a></td> <td>Pictures of interest</td>       <td colspan=2></td></tr>
+ <tr><td><a href="#Credits">Credits&nbsp;</a></td> <td>GAIA Crdits</td>       <td colspan=2></td></tr>
  <tr bgcolor="Yellow"> <th colspan=4>Text in Yellow are commands you type.</th></tr>
  <tr bgcolor="Cyan">  <th colspan=4>Text in Cyan is contents of files or file names.</th></tr>
 </table>
@@ -418,6 +419,7 @@ There are a few SQL scripts needed. Thew were creatred in the above step so they
 <tr><td>GetStarFromID</td>  <td>source_id</td>   <td>One Star</td>    <td>designation,ra,decl,phot_g_mean_mag,bp_rp</td></tr>
 <tr><td>SetLogComment</td>  <td>Coment</td>    <td>nothing</td>    <td>Inserts comment into event log</td></tr>
 <tr><td>GetVersion</td>   <td>nothing</td>   <td>Gaia Version</td>   <td>Currently "Gaia DR3"</td></tr>
+<tr><td>GetMilliSeconds</td> <td>nothing</td>   <td>Time in milliseconds</td> <td>Called from GetRaDec, GetDeclination, GetStarFromID</td></tr>
 <tr><th colspan=4><h2>Optional SQL Scripts</h2></th></tr>
 <tr><th>Function Name</th>  <th>Arguments passed</th> <th>Returns</th>    <th>Comments</th></tr>
 <tr><td>showfunctions</td>  <td>nothing</td>   <td>List of functions</td>  <td>Shows the functions in this database</td></tr>
@@ -430,7 +432,6 @@ There are a few SQL scripts needed. Thew were creatred in the above step so they
 <tr><td colspan=4></td></tr>
 <tr><td>GetFirstDate</td>  <td>Username</td>   <td>First Date</td>    <td>Called from showUsers</td></tr>
 <tr><td>GetLastDate</td>  <td>Username</td>   <td>Last Date</td>    <td>Called from showUsers</td></tr>
-<tr><td>GetMilliSeconds</td> <td>nothing</td>   <td>Time in milliseconds</td> <td>Called from GetRaDec, GetDeclination, GetStarFromID</td></tr>
 </table>
 <br/>
 <br/>
@@ -734,8 +735,8 @@ These are the times it took me to download, decompress, process and then upload 
 <br/>
 <a href="#Index">Jump to Index</a>
 <! ========================================================================================================= >
-<hr><a name="Appendix6"></a><h1>Our Current Implentation</h1>
-We currently have the following databases on our SQL server:
+<hr><a name="Appendix6"></a><h1>Appendix 6: Our Current Databases</h1>
+We currently have the following databases online on our MariaDB SQL server:
 <table border=6>
  <tr><td>GDR1</td> <td>Gaia Data Release 1</td>  <td>1.1 Billion Stars</td></tr>
  <tr><td>GDR2</td> <td>Gaia Data Release 2</td>  <td>1.6 Billion Stars</td></tr>
@@ -758,7 +759,7 @@ You can access all of these with just one account.
 <br/>
 <a href="#Index">Jump to Index</a>
 <! ========================================================================================================= >
-<hr><a name="Appendix7"></a><h1>Appendix 6: Web Links of Interest</h1>
+<hr><a name="Appendix7"></a><h1>Appendix 7: Web Links of Interest</h1>
 
 <table border=3>
  <tr><th>Description</th>         <th>Web Link</th></tr>
@@ -776,21 +777,50 @@ You can access all of these with just one account.
 <a href="#Top">Jump to Top</a>
 <! ========================================================================================================= >
 
-<hr><a name="Appendix8"></a><h1>Appendix 7: Pictures of interest</h1>
+<hr><a name="Appendix8"></a><h1>Appendix 8: Pictures of interest</h1>
 <table border=6>
 <tr><td align=center><br><h2>The Milky Way</h2><br><img  width=1200 src="images/starmap_2020_4k_print.jpg"><br><A href="https://svs.gsfc.nasa.gov/4851">https://svs.gsfc.nasa.gov/4851</a><br><br></td></tr>
 <tr><td align=center><br><h2>Star Count</h2><br><img  width=1200 src="images/StarCount.jpg"><br>Number of Stars per by 1 deg x 1 deg<br/>Counted from GAIA data<br/>&copy; 2022 Keith Sproul<br><br></td></tr>
 <tr><td align=center><img  width=1200 src="images/StarCount2.jpg"><br>Number of Stars per by 1 deg x 1 deg<br/>Counted from GAIA data<br/>&copy; 2022 Keith Sproul<br><br></td></tr>
-<tr><td align=center><br><h2>Andromeda Gaia Data Relase 1</h2> <h3>SkyTravel Program showing M-31 Andromeda with all stars turned on<br/>Using the GAIA SQL Database 1<br/>75,215 Stars in 3 dex by 3 deg grid</h3><br><img  width=1200 src="images/Andromeda-GDR1.jpg"></td></tr>
-<tr><td align=center><br><h2>Andromeda Gaia Data Relase 2</h2> <h3>SkyTravel Program showing M-31 Andromeda with all stars turned on<br/>Using the GAIA SQL Database 2<br/> ? Stars in 3 dex by 3 deg grid</h3><br></td></tr>
-<tr><td align=center><br><h2>Andromeda Gaia Data Relase 3</h2> <h3>SkyTravel Program showing M-31 Andromeda with all stars turned on<br/>Using the GAIA SQL Database 3<br/> 132,092 Stars in 3 dex by 3 deg grid</h3><br><img  width=1200 src="images/Andromeda-GDR3.jpg"></td></tr>
+<tr><td align=center><br><h2>Andromeda Gaia Data Relase 1</h2> <h3>SkyTravel Program showing M-31 Andromeda with all stars turned on<br/>Using the GAIA Release 1 SQL Database Server<br/>75,215 Stars in 3 deg by 3 deg grid</h3><br><img  width=1200 src="images/Andromeda-GDR1.jpg"></td></tr>
+<tr><td align=center><br><h2>Andromeda Gaia Data Relase 2</h2> <h3>SkyTravel Program showing M-31 Andromeda with all stars turned on<br/>Using the GAIA Release 2 SQL Database  Server<br/> 116,938 Stars in 3 deg by 3 deg grid</h3><br><img  width=1200 src="images/Andromeda-GDR2.jpg"></td></tr>
+<tr><td align=center><br><h2>Andromeda Gaia Data Relase 3</h2> <h3>SkyTravel Program showing M-31 Andromeda with all stars turned on<br/>Using the GAIA Release 3 SQL Database Server<br/> 132,092 Stars in 3 deg by 3 deg grid</h3><br><img  width=1200 src="images/Andromeda-GDR3.jpg"></td></tr>
+<tr><td align=center><br><h2>Andromeda 2Mass</h2> <h3>SkyTravel Program showing M-31 Andromeda with all stars turned on<br/>Using the 2 Micron All Sky Survey SQL Server<br/>44,142 Stars in 3 deg by 3 deg grid</h3><br><img  width=1200 src="images/Andromeda-2mass.jpg"></td></tr>
 </table>
 <a href="#Top">Jump to Top</a>
+<hr>
+<a name='Credits'>
+<h1>Credits</h1>
+<h2>SkyTravel</h2>
+SkyTravel was written by Dr. Clif Ashcraft and Dr. Frank Covits in the 1980's<br/>
+It is now maintained by<br/>
+Mark Sproul <a href="mailto:msproul@skychariot.com">msproul@skychariot.com</a>
+<br/>
+<br/>
+<h2>Alpaca Pi</h2>
+The Alpaca Pi software and drivers where written by<br/>
+Mark Sproul <a href="mailto:msproul@skychariot.com">msproul@skychariot.com</a>
+<h2>SQL</h2>
+The SQL code in this project was written by<br/>
+Keith Sproul <a href="mailto:ksproul@skychariot.com">ksproul@skychariot.com</a>
+<br/>
+<br/>
+<h2>GAIA</h2>
+This work has made use of data from the European Space Agency (ESA) mission Gaia<br/>
+(<a href="https://www.cosmos.esa.int/gaia" target="_blank">https://www.cosmos.esa.int/gaia<a>),<br/>
+processed by the Gaia Data Processing and Analysis Consortium<br/>
+(DPAC, <a href="https://www.cosmos.esa.int/web/gaia/dpac/consortium" target="_blank">https://www.cosmos.esa.int/web/gaia/dpac/consortium<a>).<br/>
+Funding for the DPAC has been provided by national institutions,<br/>
+in particular the institutions participating in the Gaia Multilateral Agreement.<br/>
+<br/>
 
+<center>
+
+</center>
 <a name="Bottom">
 <br><hr></center>
 
 <hr>
 </body>
-<address> Created 1/7/2022<br>Modified 9/27/2022<br>&copy; Copyright Keith Sproul<br>EMail <a href="mailto:ksproul@skychariot.com">ksproul@skychariot.com</a></address>
+<address> Created 1/7/2022<br>Modified 10/2/2022<br>&copy; Copyright Keith Sproul<br>EMail <a href="mailto:ksproul@skychariot.com">ksproul@skychariot.com</a></address>
 </html>
